@@ -2110,9 +2110,9 @@ header { background:#fff; box-shadow:0 5px 18px rgba(0,80,82,.12); }
 .branch-map { position:relative; isolation:isolate; min-height:620px; overflow:hidden; border:1px solid #cbd9df; border-radius:8px; background:linear-gradient(135deg,#e3f3ef,#cfe6e3); box-shadow:0 8px 24px rgba(0,127,130,.1); }
 .branch-map #branch-map-canvas { width:100%; height:100%; min-height:620px; background:#dfeeed; }
 .branch-map .leaflet-container { font-family:'Be Vietnam Pro',sans-serif; }
-.abbank-map-marker { display:grid; place-items:center; width:30px !important; height:38px !important; border:2px solid #fff; border-radius:50% 50% 50% 0; box-shadow:0 3px 8px rgba(0,50,60,.35); transform:rotate(-45deg); }
-.abbank-map-marker span { color:#fff; font:800 11px 'Be Vietnam Pro',sans-serif; transform:rotate(45deg); }
-.abbank-map-marker::after { content:""; position:absolute; inset:3px; border:1px solid rgba(255,255,255,.55); border-radius:50% 50% 50% 0; }
+.abbank-map-marker { display:grid; place-items:center; width:30px !important; height:30px !important; border:2px solid #fff; border-radius:50%; box-shadow:0 3px 8px rgba(0,50,60,.35); }
+.abbank-map-marker span { color:#fff; font:800 11px 'Be Vietnam Pro',sans-serif; }
+.abbank-map-marker::after { content:""; position:absolute; inset:4px; border:1px solid rgba(255,255,255,.55); border-radius:50%; }
 .marker-office { background:#04a9ac; }
 .marker-pgd { background:#f58220; }
 .marker-atm { background:#3d73c9; }
@@ -2817,7 +2817,7 @@ section.s { padding:64px 0; }
 <footer class="foot"><div class="container">
   <div class="foot-content">
     <div class="foot-identity">
-      <div class="logo"><img src="https://abbank.vn/frontend/images/dynamic-images/logo-footer-new.png" alt="ABBANK" height="84"></div>
+      <div class="logo"><img src="https://abbank.vn/uploads/images/2026/02/01/logo-160x62-697e39f2c1aaa.png" alt="ABBANK"></div>
       <p class="copyright">Bản quyền ©2020 ABBANK</p>
     </div>
     <div class="foot-insurance"><a href="https://www.div.gov.vn/" target="_blank" rel="noopener" aria-label="Bảo hiểm tiền gửi"><img src="https://abbank.vn/frontend/images/dynamic-images/insurance/bao-hiem-tien-gui.jpg" alt="Bảo hiểm tiền gửi"></a></div>
@@ -3300,7 +3300,7 @@ function bind(pg){
   if(pg=="faq"){const items=[...document.querySelectorAll(".faq-item")],search=$("#faq-search"),empty=$("#faq-empty"),filter=()=>{const query=search.value.trim().toLowerCase();let visible=0;items.forEach(item=>{const match=!query||item.textContent.toLowerCase().includes(query);item.hidden=!match;if(match)visible++});empty.hidden=visible>0};items.forEach(item=>item.querySelector("button").onclick=()=>{const open=item.classList.toggle("open");item.querySelector("button").setAttribute("aria-expanded",String(open))});search.oninput=filter;filter();}
   if(pg=="contact"){
     const query=$("#branch-query"),city=$("#branch-city"),type=$("#branch-type"),list=$("#branch-list"),count=$("#branch-count");
-    const markers=[],map=window.L&&L.map("branch-map-canvas",{scrollWheelZoom:false}).setView([16.05,107.2],5),markerIcon=(branch,index)=>L.divIcon({className:`abbank-map-marker marker-${branch[3]==="ATM"?"atm":branch[3]==="Phòng giao dịch"?"pgd":"office"}`,html:`<span>${index+1}</span>`,iconSize:[32,42],iconAnchor:[16,40],popupAnchor:[0,-36]});
+    const markers=[],map=window.L&&L.map("branch-map-canvas",{scrollWheelZoom:false}).setView([16.05,107.2],5),markerIcon=(branch,index)=>L.divIcon({className:`abbank-map-marker marker-${branch[3]==="ATM"?"atm":branch[3]==="Phòng giao dịch"?"pgd":"office"}`,html:`<span>${index+1}</span>`,iconSize:[34,34],iconAnchor:[17,17],popupAnchor:[0,-20]});
     if(map){L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap"}).addTo(map);BRANCHES.forEach((branch,index)=>{const marker=L.marker([branch[5],branch[6]],{icon:markerIcon(branch,index)}).addTo(map).bindPopup(`<b>${branch[0]}</b><br>${branch[3]}<br>${branch[1]}${branch[4]?`<br>${branch[4]}`:""}`);marker.on("click",()=>selectBranch(index));markers.push(marker)});setTimeout(()=>map.invalidateSize(),100)}
     const selectBranch=index=>{const card=list.querySelector(`[data-index="${index}"]`),marker=markers[index];if(!card||card.hidden)return;list.querySelectorAll(".branch-card").forEach(item=>item.classList.toggle("selected",item===card));card.scrollIntoView({behavior:"smooth",block:"nearest"});if(marker&&map){map.setView(marker.getLatLng(),Math.max(map.getZoom(),12),{animate:true});marker.openPopup()}const selected=$("#branch-selected");if(selected){selected.querySelector("b").textContent=BRANCHES[index][0]+" · "+BRANCHES[index][1];selected.querySelector("button").onclick=()=>window.open(`https://www.google.com/maps/search/?api=1&query=${BRANCHES[index][5]},${BRANCHES[index][6]}`,"_blank")}};
     const filter=()=>{const q=query.value.trim().toLowerCase(),items=[...list.querySelectorAll(".branch-card")];let visible=0;items.forEach(item=>{const ok=(!q||item.dataset.branch.toLowerCase().includes(q))&&(!city.value||item.dataset.branch.includes(city.value))&&(!type.value||item.dataset.branch.includes(type.value));item.hidden=!ok;if(ok)visible++});count.textContent=`Hiển thị ${visible} / 150 điểm giao dịch.`};
