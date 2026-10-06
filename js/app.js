@@ -82,7 +82,7 @@ const touch=()=>matchMedia("(hover:none)").matches;
 
 // ── Utility bar + main menu ──
 function menu(){const d=mode=="digital";closeMega();
-$("#ul").innerHTML=[["rates","Lãi suất"],["fxrates","Tỷ giá"],["institutional","Định chế tài chính"],["ir","IR - Nhà đầu tư"],["fees","Biểu phí"],["news","Tin tức"],["events","Ưu đãi"],["faq","FAQ"]].map(x=>`<a href="#${x[0]}" data-p="${x[0]}">${x[1]}</a>`).join("");
+$("#ul").innerHTML=[["rates","Lãi suất"],["fxrates","Tỷ giá"],["institutional","Định chế tài chính"],["ir","IR - Nhà đầu tư"],["fees","Biểu phí"],["news","Tin tức"],["events","Ưu đãi"],["careers","Tuyển dụng"],["faq","FAQ"]].map(x=>`<a href="#${x[0]}" data-p="${x[0]}">${x[1]}</a>`).join("");
 $("#ur").innerHTML=`<div class="mode"><button class="${d?"on":""}" data-m="digital">${ico("phone")} Ngân hàng số</button></div><a href="#contact">${ico("phone")}<span class="lb">Hỗ trợ 24/7</span></a><a href="#contact/app">${ico("pin")}<span class="lb">Liên hệ</span></a><button class="ib" aria-label="Tìm kiếm">${ico("search")}</button>`;
 $("#mn").innerHTML=Object.entries(SEG).map(([k,v])=>`<button class="mi ${k==seg?"on":""}" data-g="${k}" aria-haspopup="true">${v[1]}</button>`).join("")}
 document.addEventListener("mouseover",e=>{const b=e.target.closest(".mi");if(b&&!touch()&&!b.classList.contains("open"))openMega(b.dataset.g)});
