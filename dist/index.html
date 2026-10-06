@@ -2156,10 +2156,10 @@ header { background:#fff; box-shadow:0 5px 18px rgba(0,80,82,.12); }
 footer.foot { margin-top:0; padding:28px 0; color:#fff; background:#0d9fa0; border-top:0; border-radius:0; box-shadow:none; }
 .foot .container { max-width:1180px; margin:0 auto; padding:0 20px; }
 .foot-content { display:grid; grid-template-columns:1fr 1fr 1fr; align-items:center; gap:32px; min-height:112px; }
-.foot-identity { display:flex; flex-direction:column; align-items:flex-start; gap:4px; min-width:0; }
+.foot-identity { display:flex; flex-direction:row; align-items:center; gap:14px; min-width:0; }
 .foot .logo { flex:none; }
 .foot .logo img { display:block; width:230px; height:96px; object-fit:contain; }
-.foot .copyright { margin:0; color:#fff; font-size:12px; }
+.foot .copyright { margin:0; color:#fff; font-size:12px; white-space:nowrap; }
 .foot .nav { margin-left:auto; }
 .foot .nav ul,.foot .socials ul { display:flex; align-items:center; gap:10px; margin:0; padding:0; list-style:none; }
 .foot .nav a { display:block; padding:0; color:#fff; font-size:13px; opacity:1; }
@@ -2690,6 +2690,10 @@ section.s { padding:64px 0; }
   .foot-digital { grid-column:1; }
   .foot-downloads img { width:104px; max-height:38px; }
 }
+.pagination { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:28px; }
+.pagination button { min-width:36px; height:36px; padding:0 10px; color:#087e82; background:#fff; border:1px solid rgba(4,169,172,.28); border-radius:6px; cursor:pointer; }
+.pagination button:hover,.pagination button.on { color:#fff; background:#087e82; border-color:#087e82; }
+.pagination button:disabled { color:#9aafb0; background:#f2f8f8; border-color:#dceaea; cursor:not-allowed; }
 .faq-page { background:#f2f9f9; }
 .faq-page > .wrap { max-width:1080px; }
 .faq-intro { display:flex; align-items:end; justify-content:space-between; gap:32px; margin-bottom:34px; padding:34px 38px; color:#fff; background:#087e82; border-radius:18px; box-shadow:0 18px 36px rgba(8,126,130,.18); }
@@ -2949,6 +2953,10 @@ const smeCard=(p,index)=>`<article class="sme-card"><div class="sme-card-image">
 const smeVideo=(title,description,image)=>`<a class="sme-video-card" href="https://www.youtube.com/@ABBANK" target="_blank" rel="noopener"><div class="sme-video-thumb"><img src="${image}" alt=""><span class="sme-video-play" aria-hidden="true">▶</span><span class="sme-video-duration">VIDEO</span></div><div class="sme-video-copy"><span class="sme-card-kicker">ABBANK SME</span><h3>${title}</h3><p>${description}</p><b>Xem video <span>↗</span></b></div></a>`;
 const NEWS_IMAGES={1:PRODUCT_IMAGES.save,2:PRODUCT_IMAGES.card,3:PRODUCT_IMAGES.loan,4:PRODUCT_IMAGES.xfer,5:PRODUCT_IMAGES.wacc,6:PRODUCT_IMAGES.wacc};
 const ncard=n=>`<a href="#article/${n.id}" class="card nc"><div class="thumb news-thumb"><img src="${NEWS_IMAGES[n.id]}" alt="" loading="lazy"></div><div class="in"><span class="tag">${n.c}</span><h3>${n.t}</h3><p class="muted">${n.s}</p><span class="muted">${n.d}</span></div></a>`;
+const PAGE_SIZE=6;
+const pageValue=page=>Math.max(1,Number(page)||1);
+const pageItems=(items,page)=>items.slice((pageValue(page)-1)*PAGE_SIZE,pageValue(page)*PAGE_SIZE);
+const pagination=(page,total)=>{const pages=Math.ceil(total/PAGE_SIZE);if(pages<2)return "";const current=pageValue(page);return `<nav class="pagination" aria-label="Phân trang"><button type="button" data-page="${current-1}" ${current===1?"disabled":""}>Trước</button>${Array.from({length:pages},(_,i)=>i+1).map(i=>`<button type="button" data-page="${i}" class="${i===current?"on":""}" aria-label="Trang ${i}">${i}</button>`).join("")}<button type="button" data-page="${current+1}" ${current===pages?"disabled":""}>Sau</button></nav>`};
 const head=(t,s,c)=>`<div class="page-h"><div class="wrap"><div class="crumb"><a href="#home">Trang chủ</a> › ${c||t}</div><h1>${t}</h1><p>${s||""}</p></div></div>`;
 const num=v=>Number(v).toLocaleString("vi-VN");
 const segmentHero=()=>{const t=HT[seg];return `<section class="segment-hero segment-hero-${seg}" style="--segment-image:url('${MEGA_IMAGES[seg]}')"><div class="wrap"><div class="segment-hero-copy"><span class="eyebrow">ABBANK · ${SEG[seg][1].toUpperCase()}</span><h1>${t[0]}<br><em>${t[1]}</em></h1><p>${t[2]}</p><a href="#contact" class="btn">Đăng ký tư vấn</a></div><div class="segment-hero-mark"><span>${SEG[seg][0]}</span><b>${SEG[seg][1]}</b></div></div></section>`};
@@ -3250,7 +3258,7 @@ function bind(pg){
       mountQuickCarousel(carousel,cards.map((card,index)=>({href:"#institutional-services",label:card.querySelector("h3").textContent,icon:ico(iconNames[index])})),index=>cards[index].scrollIntoView({behavior:"smooth",block:"center"}),stage);
     }
   }
-  if(pg=="products"&&document.querySelector(".sme-view")){const grid=document.querySelector(".sme-grid"),buttons=[...document.querySelectorAll(".sme-view button[data-view]")];buttons.forEach(button=>button.onclick=event=>{event.preventDefault();const list=button.dataset.view==="list";grid?.classList.toggle("list",list);buttons.forEach(item=>{const active=item===button;item.classList.toggle("on",active);item.setAttribute("aria-pressed",String(active))});});}
+  if(pg=="products"){const smeView=document.querySelector(".sme-view");if(smeView){const grid=document.querySelector(".sme-grid"),buttons=[...document.querySelectorAll(".sme-view button[data-view]")];buttons.forEach(button=>button.onclick=event=>{event.preventDefault();const list=button.dataset.view==="list";grid?.classList.toggle("list",list);buttons.forEach(item=>{const active=item===button;item.classList.toggle("on",active);item.setAttribute("aria-pressed",String(active))});});}else{const grid=document.querySelector(".tabs + .grid"),cards=[...(grid?.querySelectorAll(":scope > .pc")||[])];if(grid&&cards.length>PAGE_SIZE){const controls=document.createElement("div");controls.className="pagination";grid.after(controls);const renderProducts=page=>{const pages=Math.ceil(cards.length/PAGE_SIZE),current=Math.max(1,Math.min(page,pages));cards.forEach((card,index)=>{card.hidden=index<(current-1)*PAGE_SIZE||index>=current*PAGE_SIZE});controls.innerHTML=pagination(current,cards.length);controls.querySelectorAll("[data-page]").forEach(button=>button.onclick=()=>renderProducts(Number(button.dataset.page)))};renderProducts(1)}}}
   if(pg=="timeline")bindTimeline();
   if(pg=="awards")bindAwards();
   if(pg=="org")bindOrg();
@@ -3258,7 +3266,7 @@ function bind(pg){
   if(pg=="rates"){const show=t=>{$("#tb").innerHTML=`<div class="tw"><table>${t=="d"?`<tr><th>Kỳ hạn</th><th>Tại quầy (%/năm)</th><th>Online (%/năm)</th></tr>`+DEP.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="r">${r[2]}</td></tr>`).join(""):`<tr><th>Sản phẩm vay</th><th>Lãi suất từ (%/năm)</th><th>Thời hạn tối đa</th><th>Tỷ lệ cho vay</th></tr>`+LOAN.map(r=>`<tr><td>${r[0]}</td><td class="r">${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join("")}</table></div>`};show("d");
     document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-t]").forEach(x=>x.classList.toggle("on",x==b));show(b.dataset.t)});
     const f=()=>{const P=+$("#la").value,r=+$("#lr").value/1200,n=+$("#ly").value*12;const m=r?P*r/(1-Math.pow(1+r,-n)):P/n;$("#lo").innerHTML=`Trả hàng tháng: ${num(Math.round(m))} đ<small>Tổng lãi: ${num(Math.round(m*n-P))} đ</small>`};["la","lr","ly"].forEach(i=>$("#"+i).oninput=f);f()}
-  if(pg=="news")document.querySelectorAll("[data-nc]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-nc]").forEach(x=>x.classList.toggle("on",x==b));$("#nl").innerHTML=N.filter(n=>b.dataset.nc=="Tất cả"||n.c==b.dataset.nc).map(ncard).join("")});
+  if(pg=="news"){const list=$("#nl"),cards=[...list.querySelectorAll(":scope > .nc")],paginationHost=document.createElement("div");paginationHost.id="nl-pagination";list.after(paginationHost);const renderNews=(category,page=1)=>{const filtered=cards.filter(card=>category==="Tất cả"||card.querySelector(".tag")?.textContent===category),pages=Math.ceil(filtered.length/PAGE_SIZE),current=Math.max(1,Math.min(page,pages||1));cards.forEach(card=>card.hidden=!filtered.includes(card)||filtered.indexOf(card)<(current-1)*PAGE_SIZE||filtered.indexOf(card)>=current*PAGE_SIZE);document.querySelectorAll("[data-nc]").forEach(x=>x.classList.toggle("on",x.dataset.nc===category));paginationHost.innerHTML=pagination(current,filtered.length);paginationHost.querySelectorAll("[data-page]").forEach(button=>button.onclick=()=>renderNews(category,Number(button.dataset.page)))};document.querySelectorAll("[data-nc]").forEach(button=>button.onclick=()=>renderNews(button.dataset.nc));renderNews("Tất cả")}
   if(pg=="faq"){const items=[...document.querySelectorAll(".faq-item")],search=$("#faq-search"),empty=$("#faq-empty"),filter=()=>{const query=search.value.trim().toLowerCase();let visible=0;items.forEach(item=>{const match=!query||item.textContent.toLowerCase().includes(query);item.hidden=!match;if(match)visible++});empty.hidden=visible>0};items.forEach(item=>item.querySelector("button").onclick=()=>{const open=item.classList.toggle("open");item.querySelector("button").setAttribute("aria-expanded",String(open))});search.oninput=filter;filter();}
   if(pg=="contact"){
     const query=$("#branch-query"),city=$("#branch-city"),type=$("#branch-type"),list=$("#branch-list"),count=$("#branch-count");
