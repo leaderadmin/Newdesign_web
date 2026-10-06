@@ -10,11 +10,13 @@ const HT={rb:["Ngân hàng kiến tạo","hạnh phúc","Giao dịch dễ dàng,
 const segCats=()=>CATS.filter(c=>SEGC[c[0]]==seg),segP=()=>P.filter(p=>SEGC[p.c]==seg);
 const H=()=>{const t=HT[seg],d=mode=="digital";return `<span class="eyebrow">${d?"Ngân hàng số thế hệ mới":"Ngân hàng đồng hành cùng bạn"}</span><h1>${t[0]}<br><em>${t[1]}</em></h1><p>${t[2]} ${d?"Mở và quản lý hoàn toàn trên nền tảng số 24/7.":"Được tư vấn trực tiếp tại chi nhánh và phòng giao dịch."}</p><div class="btns"><a href="#products" class="btn">${d?"Mở tài khoản online":"Đặt lịch tại chi nhánh"}</a>`};
 // ── Mega menu (ACB-style): hover/click on a main item ──
-const MT={rb:["Sản phẩm Khách hàng cá nhân","ABBANK Digital","Ngân hàng số trong tầm tay bạn"],wb:["Sản phẩm Khách hàng doanh nghiệp","ABBANK Corporate","Giải pháp tài chính toàn diện cho doanh nghiệp"],sme:["Sản phẩm Khách hàng SME","ABBANK SME","Ngân hàng số đồng hành cùng doanh nghiệp nhỏ và vừa"]};
-const MEGA_IMAGES={rb:"https://abbank.vn/uploads/images/2026/09/05/website-ag-1440x635-6a9b5bb43b1ac.jpg",wb:"https://abbank.vn/uploads/images/2025/03/04/website-1440x550-67c6d8881b462.png",sme:"https://abbank.vn/uploads/images/2024/08/01/am-hieu-nganh-nghe-giai-phap-uu-viet-banner-66ab626a2cd1f.jpg"};
-const megaHtml=s=>`<div class="wrap"><div class="mg"><div class="mgl"><h3>${MT[s][0]}</h3><ul>${CATS.filter(c=>SEGC[c[0]]==s).map(c=>`<li><a href="#products/${c[0]}" data-gs="${s}">${c[2]}</a></li>`).join("")}</ul><a class="mgall" href="#products" data-gs="${s}">Xem tất cả sản phẩm →</a></div><div class="promo p-${s}"><img src="${MEGA_IMAGES[s]}" alt="${MT[s][1]}"><b>${MT[s][1]}</b><small>${MT[s][2]}</small><a class="btn" href="#products" data-gs="${s}">Khám phá</a></div></div></div>`;
-function openMega(s){$("#mega").innerHTML=megaHtml(s);$("#mega").classList.add("open");document.querySelectorAll(".mi").forEach(b=>b.classList.toggle("open",b.dataset.g==s))}
-function closeMega(){$("#mega").classList.remove("open");document.querySelectorAll(".mi").forEach(b=>b.classList.remove("open"))}
+const MENU_GROUPS={rb:{label:"Cá nhân",route:"personal"},business:{label:"Doanh nghiệp",route:"business"},about:{label:"Về ABBANK",route:"about"}};
+const MEGA_IMAGES={rb:"https://abbank.vn/uploads/images/2026/09/05/website-ag-1440x635-6a9b5bb43b1ac.jpg",business:"https://abbank.vn/uploads/images/2025/03/04/website-1440x550-67c6d8881b462.png"};
+const productLinks=s=>CATS.filter(c=>SEGC[c[0]]==s).map(c=>`<li><a href="#products/${c[0]}" data-gs="${s}">${c[2]}</a></li>`).join("");
+const megaHtml=s=>{if(s==="about")return `<div class="wrap"><div class="mg"><div class="mgl"><h3>Về ABBANK</h3><ul><li><a href="#org">Giới thiệu</a></li><li><a href="#timeline">Lịch sử phát triển</a></li><li><a href="#awards">Giải thưởng</a></li><li><a href="#ir">Quan hệ nhà đầu tư</a></li><li><a href="#careers">Tuyển dụng</a></li><li><a href="#contact">Liên hệ & FAQ</a></li></ul></div><div class="promo p-rb"><b>Kiến tạo hạnh phúc</b><small>Đồng hành cùng khách hàng trong từng hành trình.</small><a class="btn" href="#about">Khám phá ABBANK</a></div></div></div>`;return `<div class="wrap"><div class="mg"><div class="mgl"><h3>${s==="rb"?"Sản phẩm Khách hàng cá nhân":"Giải pháp cho doanh nghiệp"}</h3>${s==="business"?`<h4>Doanh nghiệp lớn</h4><ul>${productLinks("wb")}</ul><h4>Doanh nghiệp vừa & nhỏ (SME)</h4><ul>${productLinks("sme")}</ul>`:`<ul>${productLinks("rb")}</ul>`}<a class="mgall" href="#${MENU_GROUPS[s].route}">Xem tổng quan ${MENU_GROUPS[s].label} →</a></div><div class="promo p-${s==="business"?"wb":"rb"}"><img src="${MEGA_IMAGES[s]}" alt="${MENU_GROUPS[s].label}"><b>${s==="rb"?"ABBANK Digital":"ABBANK Corporate"}</b><small>${s==="rb"?"Ngân hàng số trong tầm tay bạn":"Giải pháp tài chính toàn diện cho doanh nghiệp"}</small><a class="btn" href="#${MENU_GROUPS[s].route}">Khám phá</a></div></div></div>`};
+let megaTimer=0;
+function openMega(s){clearTimeout(megaTimer);$("#mega").innerHTML=megaHtml(s);$("#mega").classList.add("open");document.querySelectorAll(".mi").forEach(b=>{const active=b.dataset.g==s;b.classList.toggle("open",active);b.setAttribute("aria-expanded",String(active))})}
+function closeMega(){clearTimeout(megaTimer);$("#mega").classList.remove("open");document.querySelectorAll(".mi").forEach(b=>{b.classList.remove("open");b.setAttribute("aria-expanded","false")})}
 const touch=()=>matchMedia("(hover:none)").matches;
 
 (()=>{
@@ -82,18 +84,24 @@ const touch=()=>matchMedia("(hover:none)").matches;
 
 // ── Utility bar + main menu ──
 function menu(){const d=mode=="digital";closeMega();
-$("#ul").innerHTML=[["rates","Lãi suất"],["fxrates","Tỷ giá"],["institutional","Định chế tài chính"],["ir","IR - Nhà đầu tư"],["fees","Biểu phí"],["news","Tin tức"],["events","Ưu đãi"],["careers","Tuyển dụng"],["faq","FAQ"]].map(x=>`<a href="#${x[0]}" data-p="${x[0]}">${x[1]}</a>`).join("");
+$("#ul").innerHTML=[["rates","Lãi suất"],["fees","Biểu phí"],["forms","Biểu mẫu"],["contact/app","Tìm ATM/Chi nhánh"],["institutional","Định chế tài chính"]].map(x=>`<a href="#${x[0]}" data-p="${x[0]}">${x[1]}</a>`).join("");
 $("#ur").innerHTML=`<div class="mode"><button class="${d?"on":""}" data-m="digital">${ico("phone")} Ngân hàng số</button></div><a href="#contact">${ico("phone")}<span class="lb">Hỗ trợ 24/7</span></a><a href="#contact/app">${ico("pin")}<span class="lb">Liên hệ</span></a><button class="ib" aria-label="Tìm kiếm">${ico("search")}</button>`;
-$("#mn").innerHTML=Object.entries(SEG).map(([k,v])=>`<button class="mi ${k==seg?"on":""}" data-g="${k}" aria-haspopup="true">${v[1]}</button>`).join("")}
-document.addEventListener("mouseover",e=>{const b=e.target.closest(".mi");if(b&&!touch()&&!b.classList.contains("open"))openMega(b.dataset.g)});
+document.querySelector('.quick-link a[title="Công cụ và tính năng"]')?.setAttribute("href","#tools");
+document.querySelector('.quick-link a[title="ATM/Điểm giao dịch"]')?.setAttribute("title","Tìm ATM/Chi nhánh");
+document.querySelector('.quick-link a[title="Tìm ATM/Chi nhánh"] span')?.replaceChildren("Tìm ATM/Chi nhánh");
+$("#mn").innerHTML=Object.entries(MENU_GROUPS).map(([k,v])=>`<button class="mi ${k==="rb"&&seg==="rb"?"on":""}" data-g="${k}" data-route="${v.route}" aria-haspopup="true" aria-expanded="false">${v.label}</button>`).join("")}
+document.addEventListener("mouseover",e=>{const b=e.target.closest(".mi");if(b&&!touch()&&!b.classList.contains("open")){clearTimeout(megaTimer);megaTimer=setTimeout(()=>openMega(b.dataset.g),150)}});
+document.addEventListener("focusin",e=>{const b=e.target.closest(".mi");if(b&&!touch())openMega(b.dataset.g)});
 document.querySelector("header").addEventListener("mouseleave",()=>{if(!touch())closeMega()});
 document.querySelector("#mega").addEventListener("mouseleave",()=>{if(!touch())closeMega()});
 document.addEventListener("click",e=>{
 const m=e.target.closest("[data-m]");if(m){mode=m.dataset.m;route();return}
 const g=e.target.closest(".mi");
-if(g){const s=g.dataset.g;if(touch()&&!g.classList.contains("open")){openMega(s);return}seg=s;closeMega();if(location.hash=="#products")route();else location.hash="products";return}
+if(g){const s=g.dataset.g;if(touch()&&!g.classList.contains("open")){openMega(s);return}closeMega();if(s==="rb")seg="rb";if(s==="business")seg="wb";location.hash=g.dataset.route;return}
 const x=e.target.closest("[data-gs]");if(x){seg=x.dataset.gs;closeMega();setTimeout(route,0);return}
 if(!e.target.closest("header"))closeMega()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMega()});
+document.addEventListener("click",e=>{const faq=e.target.closest('a[href="#contact"]');if(faq?.textContent.includes("FAQ")){e.preventDefault();location.hash="#faq";return}const a=e.target.closest('a[href="#products"],a[href="#products/sacc"]');if(!a)return;const label=a.querySelector(".eyebrow")?.textContent||"";if(label.includes("DOANH NGHIỆP LỚN"))seg="wb";if(label.includes("DOANH NGHIỆP VỪA"))seg="sme"});
 
 function mountQuickCarousel(root,items,onSelect,backdrop=root.parentElement){
   root.classList.add("quick-carousel-host");
@@ -169,7 +177,8 @@ function bind(pg){
 const heroObserver=window.IntersectionObserver?new IntersectionObserver(([entry])=>document.body.classList.toggle("hero-visible",entry.isIntersecting),{threshold:.15}):null;
 function route(){const pathPage={"/500":"500","/404":"404","/maintenance":"maintenance"}[location.pathname];const [pg,arg]=(location.hash.slice(1)||pathPage||"home").split("/");const p=V[pg]?pg:"home";document.body.dataset.page=p;document.body.classList.toggle("sme-route",seg==="sme"||["sacc","ssvc","sguar","stf","sintl"].includes(arg));$("#app").innerHTML=V[p](arg);bind(p);heroObserver?.disconnect();const hero=document.querySelector(".abb-hero,.inst-hero,.segment-hero");if(hero)heroObserver?.observe(hero);else document.body.classList.remove("hero-visible");
   const nav={product:"products",article:"news"}[p]||p,key=p=="products"&&arg?"products/"+arg:nav;menu();document.querySelectorAll("#ul a").forEach(a=>a.classList.toggle("on",a.dataset.p==key));window.scrollTo(0,0)}
-addEventListener("hashchange",route);route();
+function syncMenuActive(){const page=document.body.dataset.page;document.querySelectorAll(".mi").forEach(b=>b.classList.toggle("on",b.dataset.route===page))}
+addEventListener("hashchange",route);addEventListener("hashchange",syncMenuActive);route();syncMenuActive();
 const eventModal=$("#event-modal");
 const closeEventModal=()=>{if(!eventModal)return;eventModal.classList.remove("open");eventModal.setAttribute("aria-hidden","true")};
 eventModal?.querySelectorAll("[data-event-close]").forEach(el=>el.addEventListener("click",closeEventModal));

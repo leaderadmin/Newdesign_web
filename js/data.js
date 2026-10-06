@@ -6,11 +6,11 @@
 // ── Product categories ──
 const CATS=[
 // Cá nhân (RB)
-["loan","loan","Vay Cá nhân","Nhà, xe, tiêu dùng"],["save","save","Tiết kiệm Cá nhân","Gửi gọn – lãi cao"],["card","card","Thẻ","Tín dụng & ghi nợ"],["acc","pay","Tài khoản Cá nhân","Thanh toán tiện lợi"],["dig","phone","Ngân hàng số","Mọi giao dịch trên app"],["xfer","send","Chuyển và nhận tiền","Trong nước & quốc tế"],
+["loan","loan","Vay vốn","Nhà, xe, tiêu dùng"],["save","save","Tiết kiệm","Gửi gọn – lãi cao"],["card","card","Thẻ","Tín dụng & ghi nợ"],["acc","pay","Tài khoản","Thanh toán tiện lợi"],["dig","phone","Ngân hàng số","Mọi giao dịch trên app"],["xfer","send","Chuyển và nhận tiền","Trong nước & quốc tế"],
 // Doanh nghiệp (WB)
-["credit","chart","Tín dụng Doanh nghiệp","Vốn cho tăng trưởng"],["wacc","pay","Tài khoản Doanh nghiệp","Quản lý dòng tiền"],["wsvc","bolt","Dịch vụ Doanh nghiệp","Thu chi, chi lương"],["guar","ins","Dịch vụ bảo lãnh","Bảo lãnh hợp đồng"],["intl","tf","Thanh toán quốc tế","Chuyển tiền, thanh toán"],["tf","tax","Tài trợ thương mại","Xuất nhập khẩu"],["fx","inv","Kinh doanh ngoại tệ và SP phái sinh","Tỷ giá, phòng ngừa rủi ro"],
+["credit","chart","Tín dụng","Vốn cho tăng trưởng"],["wacc","pay","Tài khoản","Quản lý dòng tiền"],["wsvc","bolt","Dịch vụ","Thu chi, chi lương"],["guar","ins","Bảo lãnh","Bảo lãnh hợp đồng"],["intl","tf","Thanh toán quốc tế","Chuyển tiền, thanh toán"],["tf","tax","Tài trợ thương mại","Xuất nhập khẩu"],["fx","inv","Ngoại tệ & phái sinh","Tỷ giá, phòng ngừa rủi ro"],
 // SME
-["scredit","chart","Tín dụng SME","Vốn linh hoạt cho SME"],["sacc","pay","Tài khoản SME","Tiền gửi & thanh toán"],["ssvc","bolt","Dịch vụ SME","Giải pháp quản lý"],["sguar","ins","Bảo lãnh và Cam kết cấp tín dụng","An tâm hợp tác"],["stf","tax","Tài trợ thương mại SME","Xuất nhập khẩu SME"],["sintl","tf","Thanh toán quốc tế SME","Thanh toán xuyên biên giới"]];
+["scredit","chart","Tín dụng","Vốn linh hoạt cho SME"],["sacc","pay","Tài khoản","Tiền gửi & thanh toán"],["ssvc","bolt","Dịch vụ","Giải pháp quản lý"],["sguar","ins","Bảo lãnh & cấp tín dụng","An tâm hợp tác"],["stf","tax","Tài trợ thương mại","Xuất nhập khẩu SME"],["sintl","tf","Thanh toán quốc tế","Thanh toán xuyên biên giới"]];
 
 // ── Products ──
 const P=[
