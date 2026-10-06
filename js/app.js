@@ -95,7 +95,7 @@ document.addEventListener("focusin",e=>{const b=e.target.closest(".mi");if(b&&!t
 document.querySelector("header").addEventListener("mouseleave",()=>{if(!touch())closeMega()});
 document.querySelector("#mega").addEventListener("mouseleave",()=>{if(!touch())closeMega()});
 document.addEventListener("click",e=>{
-const m=e.target.closest("[data-m]");if(m){mode=m.dataset.m;route();return}
+const m=e.target.closest("[data-m]");if(m){mode=m.dataset.m;location.hash="#digital";return}
 const g=e.target.closest(".mi");
 if(g){const s=g.dataset.g;if(touch()&&!g.classList.contains("open")){openMega(s);return}closeMega();if(s==="rb")seg="rb";if(s==="business")seg="wb";location.hash=g.dataset.route;return}
 const x=e.target.closest("[data-gs]");if(x){seg=x.dataset.gs;closeMega();setTimeout(route,0);return}
@@ -179,6 +179,7 @@ function route(){const pathPage={"/500":"500","/404":"404","/maintenance":"maint
   const nav={product:"products",article:"news"}[p]||p,key=p=="products"&&arg?"products/"+arg:nav;menu();document.querySelectorAll("#ul a").forEach(a=>a.classList.toggle("on",a.dataset.p==key));window.scrollTo(0,0)}
 function syncMenuActive(){const page=document.body.dataset.page;document.querySelectorAll(".mi").forEach(b=>b.classList.toggle("on",b.dataset.route===page))}
 addEventListener("hashchange",route);addEventListener("hashchange",syncMenuActive);route();syncMenuActive();
+const scrollDigitalFaq=()=>{if(location.hash==="#digital-faq")setTimeout(()=>document.querySelector("#digital-faq")?.scrollIntoView({behavior:"smooth"}),0)};addEventListener("hashchange",scrollDigitalFaq);scrollDigitalFaq();
 const eventModal=$("#event-modal");
 const closeEventModal=()=>{if(!eventModal)return;eventModal.classList.remove("open");eventModal.setAttribute("aria-hidden","true")};
 eventModal?.querySelectorAll("[data-event-close]").forEach(el=>el.addEventListener("click",closeEventModal));
