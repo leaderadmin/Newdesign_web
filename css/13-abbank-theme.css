@@ -193,7 +193,7 @@ footer.foot { margin-top:0; padding:28px 0; color:#fff; background:#0d9fa0; bord
 .foot-content { display:grid; grid-template-columns:1fr 1fr 1fr; align-items:center; gap:32px; min-height:112px; }
 .foot-identity { display:flex; flex-direction:row; align-items:center; gap:14px; min-width:0; }
 .foot .logo { flex:none; }
-.foot .logo img { display:block; width:230px; height:96px; object-fit:contain; }
+.foot .logo img { display:block; width:230px; height:100px; max-height:100px; object-fit:contain; }
 .foot .copyright { margin:0; color:#fff; font-size:12px; white-space:nowrap; }
 .foot .nav { margin-left:auto; }
 .foot .nav ul,.foot .socials ul { display:flex; align-items:center; gap:10px; margin:0; padding:0; list-style:none; }
@@ -494,8 +494,6 @@ body[data-page="maintenance"] .gift-promo { display:none !important; }
 body[data-page="maintenance"] .event-modal { display:none !important; }
 .event-modal-card { border-radius:14px; }
 .event-modal-copy .eyebrow { display:inline-flex; padding:8px 12px; font-size:11px; }
-.language-notice { display:block; padding:8px 10px 5px; color:#64748b; border-top:1px solid var(--line); font-size:11px; line-height:1.45; }
-
 @media(max-width:700px) {
   .gift-promo { right:14px; bottom:205px; padding:6px; }
   .gift-promo-icon { width:44px; height:44px; }
@@ -720,7 +718,7 @@ section.s { padding:64px 0; }
 @media(max-width:560px) {
   .foot-content { grid-template-columns:1fr; gap:20px; justify-items:center; }
   .foot-identity { align-items:center; }
-  .foot .logo img { width:210px; height:88px; }
+  .foot .logo img { width:210px; height:100px; max-height:100px; }
   .foot-insurance { grid-column:1; }
   .foot-digital { grid-column:1; }
   .foot-downloads img { width:104px; max-height:38px; }
@@ -760,9 +758,13 @@ section.s { padding:64px 0; }
   .faq-answer { padding:0 48px; }
 }
 @media(max-width:700px) {
-  .hd { height:66px; }
+  .hd { height:66px; gap:8px; }
   .logo img { width:122px; }
+  .mn { min-width:0; overflow:hidden; }
   .mi { padding:0 9px; }
+  .lang-current { width:38px; height:36px; gap:3px; padding:0 5px; justify-content:center; }
+  .lang-current b { display:none; }
+  .lang-menu { right:-4px; min-width:142px; max-width:calc(100vw - 24px); }
   .login { padding:0 10px; }
   .mn .mi { min-width:0; padding:0 8px; font-size:13px; }
   .login { min-width:0; padding:0 9px; font-size:10px; }
