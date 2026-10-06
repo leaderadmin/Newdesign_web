@@ -28,3 +28,16 @@ js/
 build.py              # optional: bundle to dist/index.html
 ```
 Open `index.html` directly in a browser. Brand colors: `--brand` (#008789), `--accent` (#f58220) in `css/01-base.css`.
+
+## GitHub Pages deployment
+
+Before the first deployment, open **Settings → Pages** and set **Source** to
+**GitHub Actions**. The workflow deploys on pushes to `main` or can be run manually
+from **Actions → Deploy static site → Run workflow**.
+
+Alternatively, to let the workflow enable Pages automatically, add a repository
+Actions secret named `PAGES_SETUP_TOKEN` containing a fine-grained personal access
+token scoped to this repository with **Pages: Read and write** permission.
+The default `GITHUB_TOKEN` can deploy an existing Pages site but cannot create one.
+After the site is enabled, remove the setup secret; subsequent deployments use
+`GITHUB_TOKEN`. Without either setup option, the first deployment cannot succeed.
