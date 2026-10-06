@@ -83,7 +83,7 @@ const touch=()=>matchMedia("(hover:none)").matches;
 })();
 
 // ── Utility bar + main menu ──
-function menu(){const d=mode=="digital";closeMega();
+function menu(){const d=document.body.dataset.page==="digital";closeMega();
 $("#ul").innerHTML=[["rates","Lãi suất"],["fees","Biểu phí"],["forms","Biểu mẫu"],["contact/app","Tìm ATM/Chi nhánh"],["institutional","Định chế tài chính"]].map(x=>`<a href="#${x[0]}" data-p="${x[0]}">${x[1]}</a>`).join("");
 $("#ur").innerHTML=`<div class="mode"><button class="${d?"on":""}" data-m="digital">${ico("phone")} Ngân hàng số</button></div><a href="#contact">${ico("phone")}<span class="lb">Hỗ trợ 24/7</span></a><a href="#contact/app">${ico("pin")}<span class="lb">Liên hệ</span></a><button class="ib" aria-label="Tìm kiếm">${ico("search")}</button>`;
 document.querySelector('.quick-link a[title="Công cụ và tính năng"]')?.setAttribute("href","#tools");

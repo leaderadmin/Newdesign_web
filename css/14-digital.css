@@ -1,15 +1,18 @@
 .digital-page{background:#f7fbfb;color:var(--text)}
 .digital-page .wrap{max-width:1180px;margin:0 auto;padding-left:20px;padding-right:20px}
-.digital-hero{background:linear-gradient(118deg,#073f45 0%,#08777a 58%,#d6f2ed 58%);color:#fff;overflow:hidden}
-.digital-hero .wrap{min-height:520px;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
-.digital-hero-copy{padding:72px 0}
-.digital-hero-copy h1{font-size:clamp(38px,5.5vw,72px);line-height:1.04;margin:14px 0 22px;letter-spacing:-1px}
+.digital-hero{background:#063f45;color:#fff;overflow:hidden;position:relative}
+.digital-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(118deg,rgba(4,39,44,.8) 0 54%,transparent 54%),repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 1px,transparent 1px 34px);opacity:.9;pointer-events:none}
+.digital-hero:after{content:"DIGITAL";position:absolute;right:-24px;bottom:-28px;color:rgba(255,255,255,.06);font-size:clamp(100px,18vw,260px);font-weight:900;letter-spacing:-10px;line-height:1;pointer-events:none}
+.digital-hero .wrap{min-height:560px;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;position:relative;z-index:1}
+.digital-hero-copy{padding:72px 0 72px 28px;border-left:3px solid #f58220}
+.digital-hero-copy h1{font-size:clamp(40px,5.8vw,78px);line-height:1.02;margin:14px 0 22px;letter-spacing:-1px;max-width:650px}
 .digital-hero-copy h1 em{font-style:normal;color:#f5b35e}
 .digital-hero-copy p{max-width:520px;font-size:17px;line-height:1.75;color:#e0f2ef}
 .digital-hero-copy .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .digital-hero-copy .btn.o{border-color:#d3eeea;color:#fff}
-.digital-hero-art{height:100%;display:flex;align-items:center;justify-content:center;padding:42px 0}
-.digital-hero-art img{width:min(100%,490px);max-height:430px;object-fit:contain;filter:drop-shadow(0 24px 28px rgba(4,52,54,.2))}
+.digital-hero-art{height:100%;display:flex;align-items:center;justify-content:center;padding:42px 0;position:relative}
+.digital-hero-art:before{content:"";position:absolute;inset:12% 4% 10% 8%;border:1px solid rgba(255,255,255,.28);transform:skewY(-7deg);background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,0));}
+.digital-hero-art img{width:min(100%,510px);max-height:450px;object-fit:contain;filter:drop-shadow(0 28px 24px rgba(0,20,23,.34));position:relative;z-index:1}
 .digital-highlights,.digital-steps,.digital-faq{padding:88px 0}
 .digital-intro{max-width:650px;margin-bottom:34px}
 .digital-intro h2{font-size:clamp(30px,4vw,48px);line-height:1.1;margin:10px 0 14px;color:#073f45}
@@ -37,4 +40,4 @@
 .digital-faq details{background:#fff;border-bottom:1px solid #d9e9e7;padding:22px 4px}
 .digital-faq summary{cursor:pointer;font-size:18px;font-weight:800;color:#073f45}
 .digital-faq details p{color:var(--muted);line-height:1.7;max-width:760px;padding-top:10px}
-@media(max-width:760px){.digital-hero{background:linear-gradient(150deg,#073f45 0%,#08777a 68%,#d6f2ed 68%)}.digital-hero .wrap{display:block;min-height:0}.digital-hero-copy{padding:58px 0 28px}.digital-hero-art{height:280px;padding:10px 0 38px}.digital-hero-art img{height:260px}.digital-feature-grid,.digital-step-grid{grid-template-columns:1fr}.digital-highlights,.digital-steps,.digital-faq{padding:58px 0}.digital-offers .wrap{display:block}.digital-offers img{margin-top:28px}.digital-feature-grid img{height:210px}}
+@media(max-width:760px){.digital-hero:before{background:linear-gradient(160deg,rgba(4,39,44,.86) 0 66%,transparent 66%),repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 1px,transparent 1px 26px)}.digital-hero:after{font-size:94px;right:-10px;bottom:230px;letter-spacing:-5px}.digital-hero .wrap{display:block;min-height:0}.digital-hero-copy{padding:58px 0 28px 18px}.digital-hero-art{height:300px;padding:10px 0 38px}.digital-hero-art:before{inset:5% 6% 14%}.digital-hero-art img{height:270px}.digital-feature-grid,.digital-step-grid{grid-template-columns:1fr}.digital-highlights,.digital-steps,.digital-faq{padding:58px 0}.digital-offers .wrap{display:block}.digital-offers img{margin-top:28px}.digital-feature-grid img{height:210px}}
