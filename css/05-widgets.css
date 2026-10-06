@@ -1,0 +1,376 @@
+/* ==============================================================
+   TealBank — Widgets: quick links, chat window, robo-dove mascot
+   ============================================================== */
+
+
+/* ── Quick links ── */
+.quick-link {
+  position:fixed;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:30;
+  padding-left:env(safe-area-inset-left,0px);
+}
+.quick-link ul {
+  list-style:none;
+  padding:0;
+}
+.quick-link li {
+  position:relative;
+  display:flex;
+  align-items:center;
+  width:max-content;
+  margin:8px 0;
+  background:var(--go);
+  color:#fff;
+  border:2px solid rgba(255,255,255,.72);
+  border-radius:22px;
+  box-shadow:0 10px 22px -8px rgba(245,130,32,.7),inset 0 1px 0 rgba(255,255,255,.3);
+  overflow:hidden;
+  transition:.3s;
+}
+.quick-link li:nth-child(even) {
+  background:var(--go);
+  box-shadow:0 10px 22px -8px rgba(245,130,32,.7),inset 0 1px 0 rgba(255,255,255,.3);
+}
+.quick-link li:hover {
+  transform:translateX(2px);
+  filter:brightness(1.06);
+}
+.quick-link .icon {
+  width:50px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  flex:none;
+}
+.quick-link a {
+  color:#fff;
+  font:600 14px 'Be Vietnam Pro',sans-serif;
+}
+.quick-link a:after {
+  content:"";
+  position:absolute;
+  inset:0;
+}
+.quick-link span {
+  display:block;
+  max-width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  transition:max-width .35s,padding .35s;
+}
+.quick-link li:hover span,.quick-link li:focus-within span {
+  max-width:220px;
+  padding-right:18px;
+}
+.quick-link {
+  left:auto;
+  right:0;
+  padding-left:0;
+  padding-right:env(safe-area-inset-right,0px);
+  transform:none;
+  top:50%;
+}
+.quick-link ul {
+  display:none;
+  position:absolute;
+  right:0;
+  bottom:calc(100% + 10px);
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+}
+.quick-link.open ul {
+  display:flex;
+  animation:qlin .28s ease;
+}
+.quick-link li {
+  margin:0;
+  border-radius:22px;
+  box-shadow:0 10px 22px -8px rgba(245,130,32,.7),inset 0 1px 0 rgba(255,255,255,.3);
+}
+.quick-link li:hover {
+  transform:translateX(-3px);
+}
+.quick-link span {
+  max-width:220px;
+  padding-right:18px;
+}
+.ql-tg {
+  position:relative;
+  width:52px;
+  height:52px;
+  border:2px solid rgba(255,255,255,.72);
+  cursor:pointer;
+  color:#fff;
+  background:var(--go);
+  border-radius:22px;
+  box-shadow:0 12px 26px -8px rgba(245,130,32,.8),inset 0 1px 0 rgba(255,255,255,.4);
+  display:grid;
+  place-items:center;
+  transition:.25s;
+  overflow:hidden;
+}
+.ql-tg:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.3) 50%,transparent 75%);
+  transform:translateX(-130%);
+  transition:transform .45s ease;
+}
+.ql-tg:hover {
+  filter:brightness(1.07);
+  transform:translateX(-3px);
+  box-shadow:0 16px 30px -7px rgba(245,130,32,.9),inset 0 1px 0 rgba(255,255,255,.5);
+}
+.ql-tg:hover:before {
+  transform:translateX(130%);
+}
+.ql-tg span {
+  grid-area:1/1;
+  display:grid;
+  place-items:center;
+  max-width:none;
+  padding:0;
+  transition:.25s;
+}
+.ql-tg svg {
+  transition:transform .3s cubic-bezier(.2,.8,.2,1);
+}
+.ql-tg:hover .i1 svg {
+  transform:rotate(12deg) scale(1.08);
+}
+.quick-link.open .ql-tg:hover .i2 svg {
+  transform:rotate(90deg) scale(1.08);
+}
+.ql-tg .i2,.quick-link.open .ql-tg .i1 {
+  opacity:0;
+  transform:rotate(-90deg) scale(.6);
+}
+.quick-link.open .ql-tg .i2 {
+  opacity:1;
+  transform:none;
+}
+.quick-link.open .ql-tg {
+  background:var(--go);
+  box-shadow:0 12px 26px -8px rgba(245,130,32,.8),inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+/* ── Chat widget ── */
+#chat {
+  position:fixed;
+  right:calc(20px + env(safe-area-inset-right,0px));
+  bottom:calc(94px + env(safe-area-inset-bottom,0px));
+  z-index:40;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+}
+.fab {
+  position:relative;
+  width:68px;
+  height:68px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  background:linear-gradient(135deg,#22c4c6,var(--brand) 60%,#006e70);
+  box-shadow:0 14px 30px -8px rgba(0,135,137,.75),inset 0 2px 0 rgba(255,255,255,.4),0 0 0 4px rgba(255,255,255,.55);
+  display:grid;
+  place-items:center;
+  animation:fly 3.4s ease-in-out infinite;
+}
+.fab:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:2px solid var(--b2);
+  animation:ring 2.4s ease-out infinite;
+}
+.fab:hover {
+  filter:brightness(1.08);
+}
+
+/* ── Robo-dove mascot ── */
+.bird {
+  overflow:visible;
+  filter:drop-shadow(0 3px 3px rgba(0,60,60,.35));
+}
+.wing {
+  transform-origin:24px 36px;
+  animation:flap .45s ease-in-out infinite alternate;
+}
+
+/* ── Chat widget ── */
+.hint {
+  position:absolute;
+  right:82px;
+  bottom:22px;
+  background:var(--surface);
+  color:var(--text);
+  font:600 13px 'Be Vietnam Pro',sans-serif;
+  padding:8px 14px;
+  border-radius:14px 14px 4px 14px;
+  box-shadow:var(--sh);
+  white-space:nowrap;
+  animation:fly 3.4s ease-in-out infinite;
+}
+#chat.open .hint {
+  display:none;
+}
+.cw {
+  width:350px;
+  max-width:calc(100vw - 32px);
+  height:480px;
+  max-height:calc(100vh - 140px);
+  background:var(--surface);
+  border-radius:26px;
+  box-shadow:0 30px 60px -18px rgba(0,60,62,.55),0 0 0 1px color-mix(in srgb,var(--brand) 20%,transparent);
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+#chat.open .cw {
+  display:flex;
+  animation:qlin .3s ease;
+}
+.ch {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 16px;
+  color:#fff;
+  background:radial-gradient(circle at 90% 0,#3fd6d8,transparent 55%),linear-gradient(120deg,#007a7c,var(--brand));
+}
+.ch>div:nth-child(2) {
+  flex:1;
+  line-height:1.3;
+}
+.ch small {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  opacity:.9;
+  font-size:12px;
+}
+.ch small i {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#7dff9f;
+  box-shadow:0 0 0 3px rgba(125,255,159,.3);
+}
+.av {
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;
+  place-items:center;
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4);
+}
+.ch button {
+  border:0;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  cursor:pointer;
+}
+.cm {
+  flex:1;
+  overflow-y:auto;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:linear-gradient(180deg,var(--brand-l),var(--surface));
+}
+.mg {
+  max-width:82%;
+  padding:10px 14px;
+  border-radius:18px;
+  font-size:14px;
+  line-height:1.5;
+  box-shadow:0 4px 12px -6px rgba(0,80,80,.3);
+}
+.mg.b {
+  align-self:flex-start;
+  background:var(--surface);
+  border-bottom-left-radius:4px;
+}
+.mg.u {
+  align-self:flex-end;
+  color:#fff;
+  background:var(--go);
+  border-bottom-right-radius:4px;
+}
+.mg a {
+  color:var(--brand);
+  font-weight:700;
+  text-decoration:underline;
+}
+.cq {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  padding:8px 14px 0;
+}
+.cq button {
+  border:1.5px solid color-mix(in srgb,var(--brand) 35%,transparent);
+  background:var(--surface);
+  color:var(--brand);
+  border-radius:999px;
+  padding:5px 12px;
+  font:600 12px 'Be Vietnam Pro',sans-serif;
+  cursor:pointer;
+}
+.cq button:hover {
+  background:var(--brand-l);
+}
+.cf {
+  display:flex;
+  gap:8px;
+  padding:12px 14px;
+}
+.cf input {
+  flex:1;
+  border-radius:999px;
+  padding:10px 16px;
+}
+.cf button {
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  color:#fff;
+  background:var(--go);
+  box-shadow:0 8px 16px -6px rgba(245,130,32,.7);
+}
+
+/* ── Robo-dove mascot ── */
+.w1 {
+  transform-origin:36px 38px;
+  animation:fl1 .9s ease-in-out infinite alternate;
+}
+.w2 {
+  transform-origin:40px 38px;
+  animation:fl2 .9s ease-in-out infinite alternate;
+}
+.eye {
+  animation:glow 1.3s ease-in-out infinite alternate;
+}
+.up {
+  transform-origin:40px 29px;
+  animation:upf 1s ease-in-out infinite alternate;
+}
+.lo {
+  transform-origin:36px 38px;
+  animation:lof 1s ease-in-out infinite alternate;
+}

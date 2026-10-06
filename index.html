@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#04a9ac">
+  <meta name="description" content="ABBANK – Ngân hàng kiến tạo hạnh phúc.">
+  <title>ABBANK – Ngân hàng kiến tạo hạnh phúc</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏦%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <!-- build:css -->
+  <link rel="stylesheet" href="css/01-base.css">
+  <link rel="stylesheet" href="css/02-layout.css">
+  <link rel="stylesheet" href="css/03-components.css">
+  <link rel="stylesheet" href="css/04-sections.css">
+  <link rel="stylesheet" href="css/05-widgets.css">
+  <link rel="stylesheet" href="css/06-animations.css">
+  <link rel="stylesheet" href="css/07-responsive.css">
+  <link rel="stylesheet" href="css/08-theme-modern.css">
+  <link rel="stylesheet" href="css/09-page-org.css">
+  <link rel="stylesheet" href="css/10-page-timeline.css">
+  <link rel="stylesheet" href="css/11-page-awards.css">
+    <link rel="stylesheet" href="css/12-status-pages.css">
+    <link rel="stylesheet" href="css/13-abbank-theme.css">
+  <!-- endbuild -->
+</head>
+<body>
+<!-- ===== 1. UTILITY BAR (secondary links · mode switch · support) ===== -->
+<div class="top"><div class="wrap"><nav class="ul" id="ul" aria-label="Liên kết phụ"></nav><div class="ur" id="ur"></div></div></div>
+
+<!-- ===== 2. HEADER (logo · main menu · mega menu) ===== -->
+<header>
+  <div class="wrap hd">
+    <a href="#home" class="logo"><img src="https://abbank.vn/uploads/images/2026/02/01/logo-160x62-697e39f2c1aaa.png" alt="ABBANK"></a>
+    <nav class="mn" id="mn" aria-label="Menu chính"></nav>
+    <div class="lang-switch" id="lang-switch">
+      <button class="lang-current" id="lang-current" type="button" aria-label="Chọn ngôn ngữ" aria-expanded="false"><span class="lang-flag" data-lang-flag>🇻🇳</span><b data-lang-code>VI</b><span class="lang-chevron">⌄</span></button>
+      <div class="lang-menu" role="menu">
+        <button type="button" data-lang="vi" role="menuitem"><span class="lang-flag">🇻🇳</span><span>Tiếng Việt</span></button>
+        <button type="button" data-lang="en" role="menuitem"><span class="lang-flag">🇬🇧</span><span>English</span></button>
+        <span class="language-notice" id="language-notice" role="status" aria-live="polite" hidden></span>
+      </div>
+    </div>
+    <a href="#contact" class="btn login">Đăng nhập ABBANK ›</a>
+  </div>
+  <div class="mega" id="mega"></div>
+</header>
+
+<!-- ===== 3. QUICK LINKS (sticky, right edge) ===== -->
+<div class="quick-link" id="ql"><ul id="qlu"><li><div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg></div><a href="#contact/app" title="ATM/Điểm giao dịch"><span>ATM/Điểm giao dịch</span></a></li><li><div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><a href="#rates" title="Công cụ và tính năng"><span>Công cụ và tính năng</span></a></li><li><div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div><a href="#fees" title="Biểu phí"><span>Biểu phí</span></a></li><li><div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div><a href="#rates" title="Lãi suất"><span>Lãi suất</span></a></li><li><div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div><a href="#forms" title="Biểu mẫu"><span>Biểu mẫu</span></a></li></ul><button class="ql-tg" id="qlt" aria-label="Liên kết nhanh" aria-expanded="false" aria-controls="qlu"><span class="i1"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><span class="i2"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span></button></div>
+
+<!-- ===== 4. MAIN (pages are rendered by js/views.js) ===== -->
+<a class="gift-promo" href="#events" aria-label="Ưu đãi nhận quà"><span class="gift-promo-icon" aria-hidden="true">🎁</span><span class="gift-promo-label">Nhận quà ngay</span><i></i></a>
+<div class="event-modal" id="event-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
+  <div class="event-modal-backdrop" data-event-close></div>
+  <div class="event-modal-card">
+    <button class="event-modal-close" type="button" aria-label="Đóng quảng cáo" data-event-close>×</button>
+    <div class="event-modal-art" aria-hidden="true">🎁</div>
+    <div class="event-modal-copy"><span class="eyebrow">ABBANK · ƯU ĐÃI ĐẶC BIỆT</span><h2 id="event-modal-title">Giao dịch dễ dàng,<br><em>nhận quà kiệt tác</em></h2><p>Mở tài khoản, gửi tiết kiệm và nhận những phần quà thiết thực dành riêng cho bạn.</p><a href="#events" class="btn" data-event-close>Khám phá ưu đãi</a></div>
+  </div>
+</div>
+<main id="app"></main>
+
+<!-- ===== 5. FOOTER ===== -->
+<div class="footer-menu"><div class="container"><div class="foot-products">
+  <div><h4>Cá nhân</h4><a href="https://abbank.vn/vay/vay-mua-nha" target="_blank" rel="noopener">Vay Cá nhân</a><a href="https://abbank.vn/tiet-kiem/tiet-kiem-ca-nhan" target="_blank" rel="noopener">Tiết kiệm Cá nhân</a><a href="https://abbank.vn/the/themaster" target="_blank" rel="noopener">Thẻ ABBank</a><a href="https://abbank.vn/dich-vu/tai-khoan-ca-nhan" target="_blank" rel="noopener">Tài khoản Cá nhân</a><a href="https://abbank.vn/dich-vu/ngan-hang-so-ca-nhan" target="_blank" rel="noopener">Ngân hàng số</a><a href="https://abbank.vn/dich-vu/chuyen-nhan-tien-ca-nhan" target="_blank" rel="noopener">Chuyển và nhận tiền Cá nhân</a></div>
+  <div><h4>Doanh nghiệp</h4><a href="https://abbank.vn/dich-vu/tin-dung-doanh-nghiep" target="_blank" rel="noopener">Tín dụng Doanh nghiệp</a><a href="https://abbank.vn/dich-vu/tai-khoan-doanh-nghiep" target="_blank" rel="noopener">Tài khoản Doanh nghiệp</a><a href="https://abbank.vn/dich-vu/dich-vu-doanh-nghiep" target="_blank" rel="noopener">Dịch vụ Doanh nghiệp</a><a href="https://abbank.vn/dich-vu/dich-vu-bao-lanh" target="_blank" rel="noopener">Dịch vụ bảo lãnh</a><a href="https://abbank.vn/dich-vu/thanh-toan-quoc-te" target="_blank" rel="noopener">Thanh toán quốc tế</a><a href="https://abbank.vn/dich-vu/tai-tro-thuong-mai" target="_blank" rel="noopener">Tài trợ thương mại</a><a href="https://abbank.vn/dich-vu/ngoai-te-va-phai-sinh" target="_blank" rel="noopener">Kinh doanh ngoại tệ và SP phái sinh</a></div>
+  <div><h4>SME</h4><a href="https://abbank.vn/dich-vu/tin-dung-vua-va-nho" target="_blank" rel="noopener">Tín dụng SME</a><a href="https://abbank.vn/dich-vu/tien-gui-sme" target="_blank" rel="noopener">Tài khoản SME</a><a href="https://abbank.vn/dich-vu/dich-vu-sme" target="_blank" rel="noopener">Dịch vụ SME</a><a href="https://abbank.vn/dich-vu/bao-lanh-va-cam-ket-cap-tin-dung" target="_blank" rel="noopener">Bảo lãnh và Cam kết cấp tín dụng</a><a href="https://abbank.vn/dich-vu/tai-tro-thuong-mai-sme" target="_blank" rel="noopener">Tài trợ thương mại SME</a><a href="https://abbank.vn/dich-vu/thanh-quoc-te-sme" target="_blank" rel="noopener">Thanh toán quốc tế SME</a></div>
+  <div><h4>Về ABBANK</h4><a href="#org">Về chúng tôi</a><a href="#timeline">Lịch sử phát triển</a><a href="#awards">Giải thưởng</a><a href="#ir">Quan hệ nhà đầu tư</a><a href="#faq">Câu hỏi thường gặp</a><a href="#contact">Liên hệ ABBANK</a></div>
+</div></div></div>
+<footer class="foot"><div class="container">
+  <div class="foot-content">
+    <div class="foot-identity">
+      <div class="logo"><img src="https://abbank.vn/frontend/images/dynamic-images/logo-footer-new.png" alt="ABBANK" width="200" height="84"></div>
+      <p class="copyright">Bản quyền ©2020 ABBANK</p>
+    </div>
+    <div class="foot-insurance"><a href="https://www.div.gov.vn/" target="_blank" rel="noopener" aria-label="Bảo hiểm tiền gửi"><img src="https://abbank.vn/frontend/images/dynamic-images/insurance/bao-hiem-tien-gui.jpg" alt="Bảo hiểm tiền gửi"></a></div>
+    <div class="foot-digital">
+      <div class="foot-downloads" aria-label="Tải ứng dụng ABBANK">
+        <a href="https://play.google.com/store/search?q=ABBANK&c=apps" target="_blank" rel="noopener" aria-label="Tìm ABBANK trên Google Play"><img src="https://play.google.com/intl/vi/badges/static/images/badges/vi_badge_web_generic.png" alt="Tải ứng dụng trên Google Play"></a>
+        <a href="https://apps.apple.com/vn/search?term=ABBANK" target="_blank" rel="noopener" aria-label="Tìm ABBANK trên App Store"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/vi-vn?size=250x83" alt="Tải ứng dụng trên App Store"></a>
+      </div>
+      <div class="socials"><ul><li><a href="https://www.facebook.com/nganhanganbinh/" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.625 1.25H9.75C8.9212 1.25 8.12634 1.57924 7.54029 2.16529C6.95424 2.75134 6.625 3.5462 6.625 4.375V6.25H4.75V8.75H6.625V13.75H9.125V8.75H11L11.625 6.25H9.125V4.375C9.125 4.20924 9.19085 4.05027 9.30806 3.93306C9.42527 3.81585 9.58424 3.75 9.75 3.75H11.625V1.25Z" fill="white"></path></svg></a></li></ul></div>
+    </div>
+  </div>
+</div></footer>
+
+
+<!-- ===== 6. CHAT WIDGET (robo-dove) ===== -->
+<div id="chat"><div class="cw" id="cw" role="dialog" aria-label="Chat với chúng tôi"><div class="ch"><div class="av"><svg class="bird" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#bccbcb"/></linearGradient></defs><g class="lo"><path d="M14 23C10 28 10 36 15 42C21 49 31 51 40 47C43 45 45 43 46 41C38 44 28 40 23 34C19 30 16 26 14 23Z" fill="#fff"/><path d="M12 35C15 44 23 48.5 32 48.5" stroke="#7fd6d7" stroke-width="1" stroke-linecap="round" fill="none"/><circle class="eye" cx="12.3" cy="35.5" r="1.1" fill="#7dffff"/><circle class="eye" cx="19.5" cy="45.3" r="1.1" fill="#7dffff"/><circle class="eye" cx="29" cy="48.4" r="1.1" fill="#7dffff"/></g><g class="up"><path d="M21 16C31 11 43 13 48 27L38 29C33 22 27 19 21 16Z" fill="url(#dg)"/><path d="M27 16.5C34 17 40 21 43 26.5M25.5 18.5C31 20.5 35.5 23.5 38 28" stroke="#a9bcbc" stroke-width=".9" stroke-linecap="round" fill="none"/><circle class="eye" cx="21.3" cy="16" r="1.2" fill="#7dffff"/></g><path d="M38 29C43 27 50 27 55 29C53 31 51 33 50 36C47 42 41 45 36 44C31 44 27 41 24 35C29 35 35 32 38 29Z" fill="#fff"/><path d="M31 41C36 42.5 42 40.5 47 36" stroke="#7fd6d7" stroke-width="1" stroke-linecap="round" fill="none"/><circle class="eye" cx="38.5" cy="38.3" r="2.1" fill="#7dffff" stroke="#0a4f51" stroke-width=".9"/><path d="M42 30.6C44 29.3 48 29.3 51 30.3L50 33C47 33.7 44 33.5 42 32.6Z" fill="#0a4f51"/><circle class="eye" cx="48" cy="31.5" r="1.2" fill="#7dffff"/><path d="M51.5 29L56 29L52.2 31.6Z" fill="#f58220"/><line x1="51" y1="28.3" x2="53" y2="22.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><circle class="eye" cx="53.3" cy="21.5" r="1.8" fill="#f58220"/></svg></div><div><b>TealBot</b><small><i></i>Trợ lý ảo · Trực tuyến</small></div><button id="cx" aria-label="Đóng">✕</button></div><div class="cm" id="cm"></div><div class="cq" id="cq"></div><div class="cf"><input id="ci" placeholder="Nhập tin nhắn…" autocomplete="off"><button id="cs" aria-label="Gửi">➤</button></div></div><div class="hint" id="ch">Chat với chúng tôi</div><button class="fab" id="fab" aria-label="Chat với chúng tôi"><svg class="bird" viewBox="0 0 64 64" width="46" height="46" aria-hidden="true"><defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#bccbcb"/></linearGradient></defs><g class="lo"><path d="M14 23C10 28 10 36 15 42C21 49 31 51 40 47C43 45 45 43 46 41C38 44 28 40 23 34C19 30 16 26 14 23Z" fill="#fff"/><path d="M12 35C15 44 23 48.5 32 48.5" stroke="#7fd6d7" stroke-width="1" stroke-linecap="round" fill="none"/><circle class="eye" cx="12.3" cy="35.5" r="1.1" fill="#7dffff"/><circle class="eye" cx="19.5" cy="45.3" r="1.1" fill="#7dffff"/><circle class="eye" cx="29" cy="48.4" r="1.1" fill="#7dffff"/></g><g class="up"><path d="M21 16C31 11 43 13 48 27L38 29C33 22 27 19 21 16Z" fill="url(#dg)"/><path d="M27 16.5C34 17 40 21 43 26.5M25.5 18.5C31 20.5 35.5 23.5 38 28" stroke="#a9bcbc" stroke-width=".9" stroke-linecap="round" fill="none"/><circle class="eye" cx="21.3" cy="16" r="1.2" fill="#7dffff"/></g><path d="M38 29C43 27 50 27 55 29C53 31 51 33 50 36C47 42 41 45 36 44C31 44 27 41 24 35C29 35 35 32 38 29Z" fill="#fff"/><path d="M31 41C36 42.5 42 40.5 47 36" stroke="#7fd6d7" stroke-width="1" stroke-linecap="round" fill="none"/><circle class="eye" cx="38.5" cy="38.3" r="2.1" fill="#7dffff" stroke="#0a4f51" stroke-width=".9"/><path d="M42 30.6C44 29.3 48 29.3 51 30.3L50 33C47 33.7 44 33.5 42 32.6Z" fill="#0a4f51"/><circle class="eye" cx="48" cy="31.5" r="1.2" fill="#7dffff"/><path d="M51.5 29L56 29L52.2 31.6Z" fill="#f58220"/><line x1="51" y1="28.3" x2="53" y2="22.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><circle class="eye" cx="53.3" cy="21.5" r="1.8" fill="#f58220"/></svg></button></div>
+
+<!-- ===== SCRIPTS (order matters) ===== -->
+<!-- build:js -->
+<script src="js/data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/views.js"></script>
+<script src="js/org.js"></script>
+<script src="js/timeline.js"></script>
+<script src="js/awards.js"></script>
+<script src="js/app.js"></script>
+<script src="js/quick-link.js"></script>
+<script src="js/chat.js"></script>
+<!-- endbuild -->
+</body>
+</html>

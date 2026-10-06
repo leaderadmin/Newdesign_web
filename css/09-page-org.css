@@ -1,0 +1,65 @@
+/* ==============================================================
+   TealBank — Page: Organization chart (#org)
+   ============================================================== */
+
+/* ── Layout ── */
+.org{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+.chart,.panel{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:var(--sh)}
+.panel{position:sticky;top:140px}
+.panel h3{margin:10px 0 8px;font-size:20px}
+.panel h4{margin:18px 0 4px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--brand)}
+.ic.big{width:64px;height:64px;border-radius:20px}
+.ic.big .i{width:34px;height:34px}
+
+/* ── Legend ── */
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:22px;font-size:12px;font-weight:600;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend span:before{content:"";width:12px;height:12px;border-radius:4px;background:var(--c)}
+.legend em{margin-left:auto;font-style:normal;font-weight:500}
+.g{--c:var(--brand)}.s{--c:var(--accent)}.e{--c:color-mix(in srgb,var(--brand) 55%,var(--text))}
+
+/* ── Tiers & connectors ── */
+.tier{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin:0}
+.tier+.tier{margin-top:12px}
+.vl{display:block;width:2px;height:30px;margin:0 auto;background:linear-gradient(var(--brand),var(--b2))}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.col{display:flex;flex-direction:column;gap:10px}
+.sub{display:flex;flex-direction:column;gap:8px;margin-left:26px;padding-left:16px;border-left:2px dashed var(--line)}
+.grps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.grp{display:flex;flex-direction:column;gap:8px;padding:16px;border:1.5px dashed color-mix(in srgb,var(--brand) 30%,var(--line));border-radius:20px}
+.grp h4{margin:0 0 4px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--brand)}
+
+/* ── Nodes ── */
+.nd{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;text-align:left;cursor:pointer;color:var(--text);background:var(--surface);border:1.5px solid var(--line);border-left:4px solid var(--c);border-radius:16px;font:600 14px/1.35 'Be Vietnam Pro',sans-serif;transition:border-color .2s,box-shadow .2s,transform .2s}
+.nd small{display:block;margin-top:2px;font-weight:500;font-size:12px;color:var(--muted)}
+.nd .ic{width:42px;height:42px;border-radius:13px;margin:0;flex:none}
+.nd .i{width:22px;height:22px}
+.nd.lg{width:auto;min-width:260px;padding:16px 22px;font-size:16px}
+.tier .nd.lg{justify-content:center}
+.nd:hover{transform:translateY(-2px);border-color:var(--c)}
+.nd.act{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
+.nd.s .ic{background:var(--accent-l)}
+.nd.s .i{stroke:var(--accent)}
+.nd.s .i .t{fill:rgba(245,130,32,.16)}
+.nd.s .i .a{fill:var(--brand)}
+.note{margin-top:22px;font-size:12px;line-height:1.5;color:var(--muted)}
+
+/* ── Avatars & leadership ── */
+.pf{display:block;flex:none;border-radius:50%;object-fit:cover}
+.stack{display:flex;margin-left:auto;padding-left:8px}
+.stack .pf{border:2px solid var(--surface);margin-left:-8px}
+.who{display:flex;flex-direction:column;gap:12px;margin:16px 0}
+.who>div{display:flex;align-items:center;gap:12px;font-size:14px}
+.who .pf{box-shadow:0 0 0 3px var(--brand-l)}
+section.org-l{padding-top:0}
+.leaders{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.lead{display:flex;flex-direction:column;align-items:center;gap:4px;padding:24px 18px;text-align:center;cursor:pointer;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:24px;font:inherit;transition:transform .25s,box-shadow .25s,border-color .25s}
+.lead .pf{margin-bottom:10px;box-shadow:0 0 0 5px var(--brand-l)}
+.lead b{font-size:16px}
+.lead span{font-size:13px;color:var(--muted)}
+.lead:hover{transform:translateY(-3px);box-shadow:var(--shh);border-color:color-mix(in srgb,var(--brand) 35%,var(--line))}
+.lead.act{border-color:var(--brand)}
+
+/* ── Responsive ── */
+@media(max-width:960px){.org{grid-template-columns:1fr}.panel{position:static}}
+@media(max-width:700px){.cols{grid-template-columns:1fr}.nd.lg{min-width:0;width:100%}.legend em{margin-left:0;width:100%}}

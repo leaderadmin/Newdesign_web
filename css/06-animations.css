@@ -1,0 +1,74 @@
+/* ==============================================================
+   TealBank — Keyframe animations
+   ============================================================== */
+
+
+/* ── Keyframes ── */
+@keyframes qlin {
+  from {
+    opacity:0;
+    transform:translateY(12px) scale(.96);
+  }
+  to {
+    opacity:1;
+    transform:none;
+  }
+}
+@keyframes fly {
+  0%,100% {
+    transform:translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform:translateY(-12px) rotate(4deg);
+  }
+}
+@keyframes flap {
+  to {
+    transform:rotate(-24deg) scaleY(.8);
+  }
+}
+@keyframes ring {
+  from {
+    transform:scale(1);
+    opacity:.8;
+  }
+  to {
+    transform:scale(1.6);
+    opacity:0;
+  }
+}
+@keyframes fl1 {
+  to {
+    transform:rotate(16deg);
+  }
+}
+@keyframes fl2 {
+  to {
+    transform:rotate(-16deg);
+  }
+}
+@keyframes glow {
+  to {
+    opacity:.35;
+  }
+}
+@keyframes upf {
+  to {
+    transform:rotate(-9deg);
+  }
+}
+@keyframes lof {
+  to {
+    transform:rotate(4deg);
+  }
+}
+@keyframes rise {
+  from {
+    opacity:0;
+    transform:translateY(14px);
+  }
+  to {
+    opacity:1;
+    transform:none;
+  }
+}

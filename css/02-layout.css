@@ -1,0 +1,203 @@
+/* ==============================================================
+   TealBank — Layout: top bar, header, navigation, sections, footer
+   ============================================================== */
+
+/* ── Container ── */
+.wrap {
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 20px;
+}
+/* ── Header, segment tabs & navigation ── */
+header {
+  position:sticky;
+  top:env(safe-area-inset-top,0px);
+  z-index:20;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.logo {
+  font-weight:800;
+  font-size:22px;
+  color:var(--brand);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.logo i {
+  width:32px;
+  height:32px;
+  border-radius:9px;
+  background:linear-gradient(135deg,var(--brand),var(--accent));
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-style:normal;
+  font-size:16px;
+}
+/* ── Page sections & grids ── */
+section.s {
+  padding:56px 0;
+}
+.h2 {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:26px;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.h2 h2 {
+  font-size:28px;
+  font-weight:800;
+}
+.h2 h2:after {
+  content:"";
+  display:block;
+  width:48px;
+  height:4px;
+  border-radius:4px;
+  background:var(--accent);
+  margin-top:8px;
+}
+.h2 a {
+  color:var(--brand);
+  font-weight:600;
+}
+.grid {
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+}
+.two {
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:28px;
+  align-items:start;
+}
+/* ── Footer ── */
+footer {
+  background:#0b2b2c;
+  color:#c5dada;
+  margin-top:40px;
+  padding:48px 0 24px;
+  font-size:14px;
+}
+footer .g {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:28px;
+}
+footer h4 {
+  color:#fff;
+  margin-bottom:10px;
+}
+footer a {
+  display:block;
+  padding:3px 0;
+  opacity:.85;
+}
+footer a:hover {
+  color:var(--accent);
+  opacity:1;
+}
+footer .c {
+  border-top:1px solid #1f4647;
+  margin-top:28px;
+  padding-top:16px;
+  text-align:center;
+  opacity:.7;
+}
+/* ── Header, segment tabs & navigation ── */
+.tg {
+  background:none;
+  border:1px solid var(--line);
+  border-radius:50%;
+  width:38px;
+  height:38px;
+  cursor:pointer;
+  color:var(--text);
+  font-size:16px;
+}
+/* ── Header, segment tabs & navigation ── */
+header {
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 28px -12px rgba(0,135,137,.35);
+  border-bottom:0;
+}
+.logo i {
+  background:var(--go);
+  box-shadow:0 6px 14px -3px rgba(245,130,32,.55);
+  border-radius:12px;
+}
+.tg {
+  background:var(--cg);
+  box-shadow:var(--sh);
+  border:0;
+}
+/* ── Footer ── */
+footer {
+  background:radial-gradient(circle at 10% 0,#0e5d5f,transparent 50%),linear-gradient(160deg,#0a3a3c,#062526);
+  border-radius:36px 36px 0 0;
+  box-shadow:0 -16px 40px -20px rgba(0,135,137,.6);
+}
+/* ── Container ── */
+.wrap {
+  max-width:1240px;
+}
+/* ── Page sections & grids ── */
+.h2 h2 {
+  font-size:clamp(24px,3vw,32px);
+}
+/* ── Page sections & grids ── */
+#app>* {
+  animation:rise .45s ease both;
+}
+
+/* ── Utility bar (secondary links · mode switch · support) ── */
+.top{background:var(--surface);border-bottom:1px solid var(--line);font-size:13px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:44px}
+.ul{display:flex;gap:22px;overflow-x:auto;white-space:nowrap}
+.ul a{color:var(--muted);font-weight:500}
+.ul a:hover,.ul a.on{color:var(--brand)}
+.ur{display:flex;align-items:center;gap:18px;flex:none}
+.ur a,.ib{display:inline-flex;align-items:center;gap:6px;border:0;background:none;cursor:pointer;color:var(--brand);font:700 13px 'Be Vietnam Pro',sans-serif}
+.ur .i{width:20px;height:20px}
+.mode{display:flex;gap:2px;padding:3px;border-radius:999px;background:var(--brand-l)}
+.mode button{display:inline-flex;align-items:center;gap:6px;border:0;background:none;cursor:pointer;color:var(--brand);padding:5px 12px;border-radius:999px;font:600 12px 'Be Vietnam Pro',sans-serif}
+.mode button.on{background:var(--brand);color:#fff}
+.mode .i{width:15px;height:15px}
+.mode button.on .i{stroke:#fff}
+.mode button.on .i .t{fill:rgba(255,255,255,.25)}
+
+/* ── Header & main menu ── */
+.hd{display:flex;align-items:center;gap:28px;height:84px}
+.mn{display:flex;gap:4px;flex:1}
+.mi{position:relative;display:flex;align-items:center;gap:6px;height:84px;padding:0 18px;border:0;background:none;cursor:pointer;color:var(--text);font:700 17px 'Be Vietnam Pro',sans-serif}
+.mi .i{width:16px;height:16px;stroke:currentColor;transition:transform .2s}
+.mi:hover,.mi.on,.mi.open{color:var(--brand)}
+.mi.open .i{transform:rotate(180deg)}
+.mi:after{content:"";position:absolute;left:18px;right:18px;bottom:0;height:3px;border-radius:3px;background:var(--accent);transform:scaleX(0);transition:transform .25s}
+.mi.on:after,.mi.open:after{transform:none}
+.login{padding:14px 26px;white-space:nowrap}
+
+/* ── Mega menu ── */
+.mega{display:none;position:absolute;left:0;right:0;top:100%}
+.mega.open{display:block;animation:qlin .22s ease}
+.mg{display:grid;grid-template-columns:1fr 340px;gap:40px;padding:30px 36px;background:var(--surface);border:1px solid var(--line);border-top:0;border-radius:0;box-shadow:0 34px 60px -30px rgba(0,60,62,.5)}
+.mgl h3{margin-bottom:18px;font-size:22px}
+.mgl ul{list-style:none;padding:0;columns:2;column-gap:40px}
+.mgl li{break-inside:avoid}
+.mgl li a{display:flex;justify-content:space-between;gap:10px;padding:11px 0;color:var(--text);font-weight:500;transition:.2s}
+.mgl li a:after{content:"›";opacity:0;transform:translateX(-6px);color:var(--accent);font-weight:800;transition:.2s}
+.mgl li a:hover{padding-left:6px;color:var(--brand)}
+.mgl li a:hover:after{opacity:1;transform:none}
+.mgall{display:inline-block;margin-top:14px;font-weight:700;color:var(--brand)}
+.promo{position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;min-height:200px;padding:22px;border-radius:22px;color:#fff;background:radial-gradient(80% 100% at 100% 0,rgba(245,130,32,.55),transparent 60%),linear-gradient(135deg,#006b6d,#008789)}
+.promo.p-wb{background:radial-gradient(80% 100% at 100% 0,rgba(25,184,186,.6),transparent 60%),linear-gradient(135deg,#083a3c,#006b6d)}
+.promo.p-sme{background:radial-gradient(80% 100% at 100% 0,rgba(255,255,255,.3),transparent 60%),linear-gradient(135deg,#d96a0a,#f58220)}
+.promo .bird{position:absolute;right:14px;top:12px;width:112px;height:112px}
+.promo b{max-width:68%;font-size:20px;line-height:1.25}
+.promo small{max-width:68%;margin:6px 0 14px;opacity:.9}
+.promo .btn{align-self:flex-start;padding:9px 20px;font-size:13px}

@@ -1,0 +1,95 @@
+/* ============================================================== 
+   TealBank — Status pages: 404, 500 and maintenance
+   ============================================================== */
+
+.status-page {
+  min-height:640px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 18%,rgba(25,184,186,.16),transparent 30%),
+    radial-gradient(circle at 12% 90%,rgba(245,130,32,.12),transparent 28%),
+    var(--page);
+}
+.status-wrap {
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  align-items:center;
+  gap:80px;
+  padding-top:80px;
+  padding-bottom:80px;
+}
+.status-copy {
+  max-width:560px;
+}
+.status-copy .eyebrow {
+  color:var(--brand);
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.status-code {
+  margin:12px 0 6px;
+  color:var(--brand);
+  font-size:clamp(76px,13vw,156px);
+  font-weight:800;
+  line-height:.9;
+  letter-spacing:.04em;
+}
+.status-copy h1 {
+  margin-bottom:12px;
+  font-size:clamp(28px,4vw,46px);
+}
+.status-copy p {
+  max-width:470px;
+  margin-bottom:28px;
+  color:var(--muted);
+  font-size:17px;
+}
+.status-mark {
+  position:relative;
+  width:320px;
+  height:320px;
+  display:grid;
+  place-items:center;
+  border:1px solid color-mix(in srgb,var(--brand) 20%,transparent);
+  border-radius:50%;
+  background:color-mix(in srgb,var(--surface) 72%,transparent);
+  box-shadow:0 30px 70px -36px rgba(0,90,92,.45);
+}
+.status-mark:before,.status-mark:after {
+  content:"";
+  position:absolute;
+  border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);
+  border-radius:50%;
+}
+.status-mark:before { inset:28px; }
+.status-mark:after { inset:72px; border-color:color-mix(in srgb,var(--brand) 30%,transparent); }
+.status-mark span {
+  position:relative;
+  z-index:1;
+  color:var(--accent);
+  font-size:58px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.status-mark i,.status-mark b {
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--accent);
+}
+.status-mark i { top:42px; right:68px; }
+.status-mark b { bottom:48px; left:58px; width:8px; height:8px; background:var(--brand); }
+
+@media(max-width:700px) {
+  .status-page { min-height:600px; }
+  .status-wrap { grid-template-columns:1fr; gap:34px; padding-top:56px; padding-bottom:56px; }
+  .status-mark { width:220px; height:220px; justify-self:center; }
+  .status-mark span { font-size:40px; }
+  .status-mark:before { inset:20px; }
+  .status-mark:after { inset:50px; }
+}

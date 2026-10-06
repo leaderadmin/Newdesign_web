@@ -1,0 +1,318 @@
+/* ==============================================================
+   TealBank — Theme: modern flat layer (loaded last)
+   Overrides the earlier glossy styling. Delete this file to revert.
+   ============================================================== */
+
+/* ── Tokens: flat surfaces, soft shadows ── */
+:root {
+  --page:var(--bg);
+  --cg:var(--surface);
+  --gb:var(--brand);
+  --go:var(--accent);
+  --sh:0 1px 2px rgba(10,50,52,.05);
+  --shh:0 18px 40px -18px rgba(10,60,62,.28);
+  --line:#e2ebeb;
+}
+/* ── Icon system (duotone line icons) ── */
+.i {
+  width:28px;
+  height:28px;
+  fill:none;
+  stroke:var(--brand);
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  flex:none;
+}
+.i .t {
+  fill:color-mix(in srgb,var(--b2) 20%,transparent);
+}
+.i .a {
+  fill:var(--accent);
+  stroke:none;
+}
+.i.s {
+  width:16px;
+  height:16px;
+  vertical-align:-3px;
+  margin-right:4px;
+}
+.ic {
+  width:56px;
+  height:56px;
+  border-radius:18px;
+  background:var(--brand-l);
+  border:0;
+  box-shadow:none;
+  transition:background .25s;
+}
+.card:hover .ic, .qi a:hover .ic {
+  background:var(--brand);
+}
+.card:hover .ic .i, .qi a:hover .ic .i {
+  stroke:#fff;
+}
+.card:hover .ic .i .t, .qi a:hover .ic .i .t {
+  fill:rgba(255,255,255,.22);
+}
+.card:hover .ic .i .a, .qi a:hover .ic .i .a {
+  fill:#ffc48a;
+}
+.card:hover .ic {
+  transform:none;
+}
+/* ── Top bar, header & navigation ── */
+header {
+  background:color-mix(in srgb,var(--surface) 92%,transparent);
+  box-shadow:none;
+  border-bottom:1px solid var(--line);
+}
+.logo i {
+  background:var(--brand);
+  box-shadow:none;
+  border-radius:10px;
+}
+/* ── Buttons ── */
+.btn {
+  background:var(--accent);
+  box-shadow:none;
+}
+.btn:hover {
+  background:#e0730f;
+  box-shadow:0 10px 24px -10px rgba(245,130,32,.7);
+}
+.btn.b {
+  background:var(--brand);
+}
+.tg {
+  box-shadow:none;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+/* ── Cards ── */
+.card {
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:22px;
+  box-shadow:var(--sh);
+}
+.cat:hover, .pc:hover, .nc:hover {
+  border-color:color-mix(in srgb,var(--brand) 35%,var(--line));
+  box-shadow:var(--shh);
+}
+.cat {
+  text-align:left;
+}
+.cat .ic {
+  margin:0 0 18px;
+}
+.tag {
+  background:var(--accent-l);
+  color:#c25e00;
+  box-shadow:none;
+}
+.rate {
+  background:none;
+  color:var(--brand);
+  -webkit-text-fill-color:currentColor;
+}
+.thumb {
+  background:linear-gradient(135deg,var(--brand-l),var(--surface));
+  box-shadow:none;
+}
+.thumb .i {
+  width:60px;
+  height:60px;
+}
+.thumb.a {
+  background:linear-gradient(135deg,var(--accent-l),var(--surface));
+}
+.thumb.a .i {
+  stroke:var(--accent);
+}
+.thumb.a .i .t {
+  fill:rgba(245,130,32,.16);
+}
+.thumb.a .i .a {
+  fill:var(--brand);
+}
+.res {
+  background:var(--brand-l);
+  border:0;
+}
+.tabs button {
+  background:var(--surface);
+  box-shadow:none;
+}
+.tabs button.on {
+  background:var(--brand);
+  box-shadow:none;
+}
+.stats>div {
+  box-shadow:none;
+}
+th {
+  background:var(--brand-l);
+  color:var(--brand);
+}
+.tw {
+  box-shadow:none;
+}
+/* ── Hero (light, airy) ── */
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 14px;
+  margin-bottom:18px;
+  border-radius:999px;
+  background:var(--brand-l);
+  color:var(--brand);
+  font-weight:700;
+  font-size:13px;
+}
+.eyebrow:before {
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--accent);
+}
+.hero {
+  color:var(--text);
+  border-radius:0;
+  box-shadow:none;
+  background:radial-gradient(55% 90% at 100% 0,color-mix(in srgb,var(--b2) 24%,transparent),transparent 62%),radial-gradient(40% 70% at 0 100%,rgba(245,130,32,.14),transparent 60%),var(--surface);
+}
+.hero:before {
+  background:color-mix(in srgb,var(--b2) 14%,transparent);
+  box-shadow:none;
+}
+.hero:after {
+  opacity:.28;
+  filter:blur(2px);
+}
+.hero>.wrap:before {
+  background-image:radial-gradient(color-mix(in srgb,var(--brand) 30%,transparent) 1px,transparent 1.6px);
+}
+.hero h1 {
+  color:var(--text);
+}
+.hero h1 em {
+  background:linear-gradient(90deg,var(--brand),var(--b2));
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+.hero p {
+  color:var(--muted);
+}
+.hero .btn.o {
+  background:transparent;
+  border-color:var(--brand);
+  color:var(--brand);
+  backdrop-filter:none;
+}
+.hero .card {
+  background:var(--surface);
+  backdrop-filter:none;
+  border:1px solid var(--line);
+  box-shadow:0 34px 60px -34px rgba(0,90,92,.4);
+}
+/* ── Quick access strip ── */
+.qi {
+  display:flex;
+  gap:4px;
+  position:relative;
+  z-index:2;
+  margin-top:-36px;
+  padding:14px;
+  overflow-x:auto;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:0 24px 44px -28px rgba(0,90,92,.4);
+}
+.qi a {
+  flex:1 0 104px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  padding:12px 6px;
+  border-radius:18px;
+  text-align:center;
+  font:600 13px/1.35 'Be Vietnam Pro',sans-serif;
+  color:var(--text);
+  transition:background .2s;
+}
+.qi a:hover {
+  background:var(--brand-l);
+}
+.qi .ic {
+  margin:0;
+}
+/* ── Sections ── */
+section.s {
+  padding:72px 0;
+}
+.h2 h2 {
+  font-weight:800;
+}
+.h2 h2:after {
+  width:36px;
+  height:4px;
+  background:var(--accent);
+}
+.strip {
+  background:var(--brand-l);
+  box-shadow:none;
+}
+.page-h {
+  background:var(--brand-l);
+  color:var(--text);
+  border-radius:0;
+  box-shadow:none;
+  border-bottom:1px solid var(--line);
+}
+.page-h p, .crumb {
+  color:var(--muted);
+  opacity:1;
+}
+.crumb a:hover {
+  color:var(--brand);
+}
+.cta {
+  background:radial-gradient(60% 120% at 100% 0,rgba(245,130,32,.4),transparent 60%),linear-gradient(135deg,#006b6d,#008789);
+  box-shadow:none;
+  border-radius:30px;
+}
+.cta .btn {
+  background:var(--accent);
+  color:#fff;
+  box-shadow:none;
+}
+footer {
+  background:#08302f;
+  box-shadow:none;
+}
+/* ── Floating widgets (flat) ── */
+.quick-link li, .quick-link li:nth-child(even) {
+  box-shadow:0 8px 20px -10px rgba(0,60,62,.5);
+}
+.fab {
+  box-shadow:0 14px 30px -10px rgba(0,110,112,.7),0 0 0 4px var(--surface);
+}
+.hint {
+  box-shadow:0 8px 24px -12px rgba(0,60,62,.4);
+  border:1px solid var(--line);
+}
+/* ── Responsive tweaks (kept here so they win over the rules above) ── */
+@media(max-width:860px) {
+  section.s {
+    padding:52px 0;
+  }
+  .qi {
+    margin-top:-24px;
+    border-radius:20px;
+  }
+}

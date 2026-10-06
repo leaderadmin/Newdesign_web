@@ -1,0 +1,26 @@
+/* ==============================================================
+   TealBank — Page: Development timeline (#timeline)
+   ============================================================== */
+.hid{display:none!important}
+.tl-note{margin:12px 0 28px;text-align:center}
+.tl-tabs{justify-content:center}
+.tl{list-style:none;padding:0;margin:44px 0 0;position:relative}
+.tl:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);border-radius:3px;background:linear-gradient(var(--brand),var(--b2) 60%,var(--accent))}
+.ti{position:relative;width:50%;padding:0 52px 38px 0;text-align:right;opacity:0;transform:translateY(26px);transition:opacity .6s,transform .6s}
+.ti.r{margin-left:50%;padding:0 0 38px 52px;text-align:left}
+.ti.in{opacity:1;transform:none}
+.dot{position:absolute;top:6px;right:-25px;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:3px solid var(--brand);box-shadow:0 0 0 6px var(--bg);z-index:1}
+.ti.r .dot{right:auto;left:-25px}
+.dot .i{width:24px;height:24px}
+.tc{display:block;padding:22px 24px;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);transition:box-shadow .25s,border-color .25s}
+.tc:hover{box-shadow:var(--shh);border-color:color-mix(in srgb,var(--brand) 35%,var(--line))}
+.yr{display:inline-block;margin-right:10px;font-size:30px;font-weight:800;line-height:1;color:var(--brand)}
+.ti:not(.r) .yr{margin:0 0 0 10px;float:right;order:2}
+.tc h3{margin:12px 0 6px;clear:both;font-size:18px}
+@media(max-width:760px){
+  .tl:before{left:24px}
+  .ti,.ti.r{width:100%;margin-left:0;padding:0 0 28px 66px;text-align:left}
+  .dot,.ti.r .dot{left:0;right:auto}
+  .ti:not(.r) .yr{float:none;margin:0 10px 0 0}
+}
+@media(prefers-reduced-motion:reduce){.ti{opacity:1;transform:none;transition:none}}

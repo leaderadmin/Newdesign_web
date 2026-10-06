@@ -1,0 +1,116 @@
+/* ==============================================================
+   TealBank — Base: design tokens (colors, gradients, shadows, dark mode), reset, typography
+   ============================================================== */
+
+
+/* ── Tokens, reset & typography ── */
+:root {
+  --brand:var(--color-background-brand-bold-default,#008789) !important;
+  --brand-d:#006668;
+  --brand-l:#e3f4f4;
+  --accent:#f58220;
+  --accent-l:#fff1e4;
+  --bg:#f5f8f8;
+  --surface:#fff;
+  --text:#12292b;
+  --muted:#5d7476;
+  --line:#dde8e8;
+  --shadow:0 6px 24px rgba(0,80,80,.08);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+/* ── Dark-mode tokens ── */
+@media (prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    --brand-l:#0d3536;
+    --accent-l:#3a2410;
+    --bg:#0c1718;
+    --surface:#132425;
+    --text:#e8f3f3;
+    --muted:#9bb4b5;
+    --line:#1f3739;
+    --shadow:0 6px 24px rgba(0,0,0,.4);
+  }
+}
+
+/* ── Tokens, reset & typography ── */
+:root[data-theme="dark"] {
+  --brand-l:#0d3536;
+  --accent-l:#3a2410;
+  --bg:#0c1718;
+  --surface:#132425;
+  --text:#e8f3f3;
+  --muted:#9bb4b5;
+  --line:#1f3739;
+  --shadow:0 6px 24px rgba(0,0,0,.4);
+}
+html {
+  scroll-padding-top:env(safe-area-inset-top,0px);
+}
+* {
+  box-sizing:border-box;
+  margin:0;
+}
+body {
+  background:var(--bg);
+  color:var(--text);
+  font:400 16px/1.6 'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+}
+a {
+  color:inherit;
+  text-decoration:none;
+}
+:root {
+  --b2:#19b8ba;
+  --o2:#ffa64d;
+  --page:linear-gradient(180deg,#e9f9f9 0,#f7fcfc 38%,#fff6ec 100%);
+  --cg:linear-gradient(160deg,#fff 0%,#eef9f9 100%);
+  --sh:0 12px 32px -10px rgba(0,135,137,.28),0 2px 8px rgba(0,80,80,.06);
+  --shh:0 22px 44px -12px rgba(0,135,137,.45),0 0 0 2px rgba(25,184,186,.35);
+  --gb:linear-gradient(135deg,var(--b2),var(--brand));
+  --go:linear-gradient(135deg,var(--o2),#f58220);
+}
+
+/* ── Dark-mode tokens ── */
+@media (prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    --page:linear-gradient(180deg,#0b1a1b,#0e1f20);
+    --cg:linear-gradient(160deg,#17322f,#112325);
+    --sh:0 12px 32px -10px rgba(0,0,0,.6);
+    --shh:0 22px 44px -12px rgba(25,184,186,.35),0 0 0 2px rgba(25,184,186,.4);
+  }
+}
+
+/* ── Tokens, reset & typography ── */
+:root[data-theme="dark"] {
+  --page:linear-gradient(180deg,#0b1a1b,#0e1f20);
+  --cg:linear-gradient(160deg,#17322f,#112325);
+  --sh:0 12px 32px -10px rgba(0,0,0,.6);
+  --shh:0 22px 44px -12px rgba(25,184,186,.35),0 0 0 2px rgba(25,184,186,.4);
+}
+body {
+  background:var(--page) fixed;
+}
+::selection {
+  background:var(--accent);
+  color:#fff;
+}
+html {
+  scroll-behavior:smooth;
+  -webkit-font-smoothing:antialiased;
+}
+* {
+  scrollbar-width:thin;
+  scrollbar-color:var(--brand) transparent;
+}
+h1,h2,h3 {
+  letter-spacing:-.01em;
+  text-wrap:balance;
+}
+:focus-visible {
+  outline:3px solid color-mix(in srgb,var(--accent) 70%,transparent);
+  outline-offset:2px;
+  border-radius:8px;
+}

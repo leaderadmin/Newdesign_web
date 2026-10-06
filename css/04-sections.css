@@ -1,0 +1,176 @@
+/* ==============================================================
+   TealBank — Sections: hero, page header, strip, call-to-action
+   ============================================================== */
+
+
+/* ── Hero ── */
+.hero {
+  background:linear-gradient(120deg,var(--brand-d),var(--brand) 60%,#14a3a5);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.hero:before,.hero:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.hero:before {
+  width:420px;
+  height:420px;
+  right:-80px;
+  top:-120px;
+  background:rgba(255,255,255,.08);
+}
+.hero:after {
+  width:220px;
+  height:220px;
+  right:180px;
+  bottom:-110px;
+  background:rgba(245,130,32,.35);
+}
+.hero .wrap {
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
+  padding:64px 20px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+.hero h1 {
+  font-size:clamp(30px,4.5vw,50px);
+  line-height:1.15;
+  font-weight:800;
+  margin-bottom:16px;
+}
+.hero h1 em {
+  font-style:normal;
+  color:#ffb877;
+}
+.hero p {
+  opacity:.92;
+  margin-bottom:26px;
+  max-width:520px;
+}
+.hero .btns {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* ── Calculator ── */
+.calc h3 {
+  margin-bottom:12px;
+  color:var(--text);
+}
+
+/* ── Highlight strip ── */
+.strip {
+  background:var(--brand-l);
+}
+
+/* ── Call to action ── */
+.cta {
+  background:linear-gradient(120deg,var(--accent),#ff9c47);
+  color:#fff;
+  border-radius:24px;
+  padding:40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.cta h2 {
+  font-size:26px;
+}
+.cta .btn {
+  background:#fff;
+  color:var(--accent);
+}
+
+/* ── Page header ── */
+.page-h {
+  background:linear-gradient(120deg,var(--brand-d),var(--brand));
+  color:#fff;
+  padding:44px 0;
+}
+.page-h h1 {
+  font-size:34px;
+  font-weight:800;
+}
+.page-h p {
+  opacity:.9;
+}
+.crumb {
+  font-size:13px;
+  opacity:.85;
+  margin-bottom:8px;
+}
+
+/* ── Hero ── */
+.hero {
+  background:radial-gradient(circle at 85% 0,#3fd6d8 0,transparent 45%),linear-gradient(120deg,#007a7c,var(--brand) 50%,#1fbfc1);
+  border-radius:0 0 40px 40px;
+  box-shadow:0 24px 50px -22px rgba(0,135,137,.7);
+}
+.hero:before {
+  background:rgba(255,255,255,.14);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.2);
+}
+.hero:after {
+  background:radial-gradient(circle at 30% 30%,#ffb877,#f58220);
+  opacity:.75;
+  filter:blur(1px);
+}
+.hero h1 em {
+  background:linear-gradient(90deg,#ffd2a3,#ffa64d);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero .card {
+  background:color-mix(in srgb,var(--surface) 94%,transparent);
+  backdrop-filter:blur(10px);
+  border:1.5px solid rgba(255,255,255,.7);
+  box-shadow:0 30px 60px -20px rgba(0,50,52,.6);
+}
+
+/* ── Highlight strip ── */
+.strip {
+  background:linear-gradient(120deg,#d8f3f3,#eefafa 50%,#ffe9d2);
+  box-shadow:inset 0 10px 24px -18px rgba(0,135,137,.4),inset 0 -10px 24px -18px rgba(245,130,32,.4);
+}
+
+/* ── Call to action ── */
+.cta {
+  background:radial-gradient(circle at 90% 10%,#ffd0a0,transparent 45%),linear-gradient(120deg,#f58220,#ffa64d);
+  border-radius:32px;
+  box-shadow:0 24px 44px -16px rgba(245,130,32,.7);
+}
+.cta .btn {
+  background:#fff;
+  color:#f58220;
+  box-shadow:0 10px 22px -8px rgba(0,0,0,.3);
+}
+
+/* ── Page header ── */
+.page-h {
+  background:radial-gradient(circle at 90% 0,#3fd6d8,transparent 45%),linear-gradient(120deg,#007a7c,var(--brand) 55%,#1fbfc1);
+  border-radius:0 0 32px 32px;
+  box-shadow:0 20px 40px -20px rgba(0,135,137,.7);
+}
+
+/* ── Hero ── */
+.hero>.wrap:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.2) 1px,transparent 1.6px);
+  background-size:22px 22px;
+  -webkit-mask-image:linear-gradient(90deg,#000,transparent 65%);
+  mask-image:linear-gradient(90deg,#000,transparent 65%);
+  pointer-events:none;
+  z-index:-1;
+}
